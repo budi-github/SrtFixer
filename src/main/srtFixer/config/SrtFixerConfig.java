@@ -8,7 +8,7 @@ package main.srtFixer.config;
 public class SrtFixerConfig {
 
     /**
-     * Maximum (single) line length.
+     * Maximum (single) line length. 
      */
     public static final int MAX_LINE_LENGTH = 60;
 

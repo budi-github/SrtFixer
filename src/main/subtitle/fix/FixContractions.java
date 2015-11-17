@@ -7,10 +7,10 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import main.regex.RegexEnum;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
 import main.util.StringUtil;
+import main.util.regex.RegexEnum;
 
 /**
  * Fix contractions.

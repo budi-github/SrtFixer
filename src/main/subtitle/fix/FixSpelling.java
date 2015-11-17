@@ -3,9 +3,9 @@ package main.subtitle.fix;
 import java.util.Map;
 import java.util.TreeMap;
 
-import main.regex.RegexEnum;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
+import main.util.regex.RegexEnum;
 
 /**
  * Fix all common spelling errors.

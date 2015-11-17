@@ -1,7 +1,7 @@
 package main.util;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * {@link String} utilities.

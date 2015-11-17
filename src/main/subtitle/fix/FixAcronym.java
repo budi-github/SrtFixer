@@ -4,11 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import main.regex.RegexEnum;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
 import main.util.StringBuilderUtil;
 import main.util.StringUtil;
+import main.util.regex.RegexEnum;
 
 /**
  * Fix acronyms.

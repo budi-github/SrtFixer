@@ -1,9 +1,9 @@
 package main.subtitle.fix;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * Prepare line.

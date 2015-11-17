@@ -3,10 +3,10 @@ package main.subtitle.fix;
 import java.util.Set;
 import java.util.TreeSet;
 
-import main.regex.RegexEnum;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
 import main.util.StringUtil;
+import main.util.regex.RegexEnum;
 
 /**
  * Fix misplaced quotes.

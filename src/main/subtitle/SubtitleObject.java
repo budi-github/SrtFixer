@@ -1,7 +1,5 @@
 package main.subtitle;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
 import main.subtitle.fix.ChangeLsToIs;
 import main.subtitle.fix.FixAbbreviations;
 import main.subtitle.fix.FixAcronym;
@@ -32,8 +30,10 @@ import main.subtitle.fix.fixMultipleLines.FixUnbalancedDashes;
 import main.subtitle.fix.remove.RemoveCharacterName;
 import main.subtitle.fix.remove.RemoveEmpty;
 import main.subtitle.fix.remove.RemoveEndingCharacter;
+import main.subtitle.util.SubtitleUtil;
 import main.util.StringUtil;
-import main.util.SubtitleUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * Container for all necessary components of a subtitle.

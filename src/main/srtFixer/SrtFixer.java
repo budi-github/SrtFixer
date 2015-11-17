@@ -14,7 +14,7 @@ import java.util.Set;
 import main.srtFixer.util.SrtDirectory;
 import main.srtFixer.util.SrtFixerUtil;
 import main.subtitle.SubtitleObject;
-import main.util.SubtitleUtil;
+import main.subtitle.util.SubtitleUtil;
 import main.util.Util;
 
 /**
@@ -81,7 +81,6 @@ public class SrtFixer {
      * @throws IOException
      */
     public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync) throws IOException {
-
         SrtDirectory srtDirectory = new SrtDirectory(directory);
         // in the case where directory only contains the original srt file,
         // copy this file into a new file and recreate the SrtDirectory.

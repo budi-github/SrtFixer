@@ -3,9 +3,9 @@ package main.subtitle.fix;
 import java.util.HashSet;
 import java.util.Set;
 
-import main.regex.RegexEnum;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
+import main.util.regex.RegexEnum;
 
 /**
  * Change l's to I's.

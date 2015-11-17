@@ -2,10 +2,10 @@ package test.subtitle.fix;
 
 import java.util.Collection;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
 import main.subtitle.fix.FixSpacing;
 import main.util.StringUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 import test.ParameterizedCollection;
 import test.TestProperty;
 import test.subtitle.BaseSubtitleTest;

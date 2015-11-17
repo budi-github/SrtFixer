@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
 import main.subtitle.SubtitleObject;
 import main.subtitle.TimeHolder;
 import main.util.Util;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * SrtFixer utilities.

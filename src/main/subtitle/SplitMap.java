@@ -3,8 +3,8 @@ package main.subtitle;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * This class functions as a caching mechanism for String.split.

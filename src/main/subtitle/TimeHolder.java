@@ -2,8 +2,8 @@ package main.subtitle;
 
 import java.io.IOException;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * Contains time used for standard .srt files.

@@ -3,12 +3,12 @@ package main.subtitle.fix.fixMultipleLines;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
 import main.srtFixer.config.SrtFixerConfig;
 import main.subtitle.Fixer;
+import main.subtitle.util.SubtitleUtil;
 import main.util.StringUtil;
-import main.util.SubtitleUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * Fix subtitles that span one line.

@@ -1,11 +1,11 @@
-package main.util;
+package main.subtitle.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import main.regex.RegexEnum;
-import main.regex.RegexUtil;
+import main.util.regex.RegexEnum;
+import main.util.regex.RegexUtil;
 
 /**
  * Subtitle utilities.
