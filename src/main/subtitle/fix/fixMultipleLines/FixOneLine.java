@@ -1,0 +1,57 @@
+package main.subtitle.fix.fixMultipleLines;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import main.regex.RegexEnum;
+import main.regex.RegexUtil;
+import main.srtFixer.config.SrtFixerConfig;
+import main.subtitle.Fixer;
+import main.util.StringUtil;
+import main.util.SubtitleUtil;
+
+/**
+ * Fix subtitles that span one line.
+ * 
+ * @author budi
+ */
+public class FixOneLine implements Fixer {
+
+    /**
+     * {@link FixOneLine} fix.
+     * 
+     * @param line line to fix
+     * @return fixed line
+     */
+    public static String fix(String line) {
+        if (line == null || line.isEmpty() || StringUtil.count(line, '\n') != 0
+                || line.length() < SrtFixerConfig.MAX_LINE_LENGTH) {
+            return line;
+        }
+
+        List<StringBuilder> list = new ArrayList<StringBuilder>();
+
+        if (!line.contains("...")) {
+            list.addAll(SubtitleUtil.balanceString(line, "\\."));
+        }
+        list.addAll(SubtitleUtil.balanceString(line, ","));
+        list.addAll(SubtitleUtil.balanceString(line, "\\?"));
+        list.addAll(SubtitleUtil.balanceString(line, "!"));
+
+        StringBuilder balanced = SubtitleUtil.mostBalanced(list);
+        if (balanced != null) {
+            String balancedString = balanced.toString();
+            String[] split = RegexUtil.split(RegexEnum.NEWLINE, balancedString);
+            if (Math.abs(split[0].length() - split[1].length())
+                    / (float) balancedString.length() < SrtFixerConfig.BALANCE_WEIGHT) {
+                return FixTwoLines.fix(balancedString);
+            }
+        }
+        if (line.contains(" ")) {
+            return SubtitleUtil.splitClosestToMiddle(line, ' ').toString();
+        }
+
+        return line;
+    }
+
+}
