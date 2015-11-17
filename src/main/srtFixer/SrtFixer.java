@@ -85,8 +85,9 @@ public class SrtFixer {
         // in the case where directory only contains the original srt file,
         // copy this file into a new file and recreate the SrtDirectory.
         if (srtDirectory.isOnlyContainsOriginalSrt()) {
-            Util.copyFile(srtDirectory.getNewSrtPath(), srtDirectory.generateCopySrtPath());
-            srtDirectory = new SrtDirectory(directory);
+            if (srtDirectory.getNewSrtPath() != null) {
+                Util.copyFile(srtDirectory.getNewSrtPath(), srtDirectory.generateCopySrtPath());
+            }
         }
 
         List<SubtitleObject> subtitleList = SrtFixerUtil.parseSubtitleList(srtDirectory.getOriginalSrtFile().getPath());
@@ -250,6 +251,7 @@ public class SrtFixer {
      * @throws IOException
      */
     private static void writeListToFile(List<SubtitleObject> subtitleList, String path) throws IOException {
+        System.out.println("Writing to: " + path);
         Writer out = null;
         try {
             out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8));

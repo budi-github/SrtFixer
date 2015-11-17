@@ -2,13 +2,18 @@ package main.srtFixer.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import main.util.Util;
 
 /**
  * Directory containing srt file.
+ * 
+ * Contains file information and path locations of srt file(s) and media file.
  * 
  * @author budi
  */
@@ -19,12 +24,18 @@ public class SrtDirectory {
      */
     private final static Set<String> MEDIA_FILE_EXTENSIONS;
 
+    /**
+     * Old subtitles will potentially end in this.
+     */
+    private static final String OLD_ENDING = " (Old).srt";
+
     static {
         MEDIA_FILE_EXTENSIONS = new HashSet<String>();
         MEDIA_FILE_EXTENSIONS.add("avi");
         MEDIA_FILE_EXTENSIONS.add("flv");
         MEDIA_FILE_EXTENSIONS.add("mkv");
         MEDIA_FILE_EXTENSIONS.add("mp4");
+        MEDIA_FILE_EXTENSIONS.add("wmv");
     }
 
     /**
@@ -35,7 +46,7 @@ public class SrtDirectory {
     /**
      * List of files in directory.
      */
-    private File[] fileArray;
+    private List<File> fileList;
 
     /**
      * File containing media.
@@ -71,7 +82,10 @@ public class SrtDirectory {
         }
 
         this.path = path;
-        this.fileArray = directory.listFiles();
+        File[] fileArray = directory.listFiles();
+        this.fileList = Arrays.asList(fileArray);
+        Collections.sort(fileList);
+        Collections.reverse(fileList);
         analyze();
     }
 
@@ -90,7 +104,7 @@ public class SrtDirectory {
      * Find media file in directory.
      */
     public void findMediaFile() {
-        for (File f : fileArray) {
+        for (File f : fileList) {
             String extension = Util.getFileExtension(f);
             if (MEDIA_FILE_EXTENSIONS.contains(extension)) {
                 mediaFile = f;
@@ -103,8 +117,10 @@ public class SrtDirectory {
      * Find new srt file path in directory.
      */
     public void findNewSrtPath() {
-        String srtPath = mediaFile.getPath();
-        newSrtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
+        if (mediaFile != null) {
+            String srtPath = mediaFile.getPath();
+            newSrtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
+        }
     }
 
     /**
@@ -127,7 +143,7 @@ public class SrtDirectory {
         if (mediaFile != null) {
             String srtPath = mediaFile.getPath();
             srtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
-            for (File f : fileArray) {
+            for (File f : fileList) {
                 if (!f.getPath().equals(srtPath) && Util.getFileExtension(f).equalsIgnoreCase("srt")) {
                     originalSrtFile = f;
                     break;
@@ -142,17 +158,36 @@ public class SrtDirectory {
                     throw new IOException(String.format("srt file not found in %s", path));
                 }
             }
+        } else {
+            for (File f : fileList) {
+                if (Util.getFileExtension(f).equalsIgnoreCase("srt")) {
+                    originalSrtFile = f;
+                    onlyContainsOriginalSrt = true;
+                    break;
+                }
+            }
+        }
+
+        if (originalSrtFile == null) {
+            throw new IOException(String.format("srt file not found in %s", path));
         }
     }
 
     /**
      * Generate path where srt file should be copied to.
      * 
-     * @return path where srt file should be copited to.
+     * @return path where srt file should be copied to.
      */
     public String generateCopySrtPath() {
-        String copyPath = newSrtPath.substring(0, newSrtPath.lastIndexOf('.'));
-        return String.format("%s (Old).srt", copyPath);
+        String copyPath = "";
+        if (newSrtPath != null) {
+            copyPath = newSrtPath.substring(0, newSrtPath.lastIndexOf('.'));
+        } else if (originalSrtFile != null) {
+            copyPath = originalSrtFile.getPath();
+            copyPath = copyPath.substring(0, copyPath.lastIndexOf('.'));
+        }
+
+        return String.format("%s%s", copyPath, OLD_ENDING);
     }
 
     /**
@@ -163,10 +198,10 @@ public class SrtDirectory {
     }
 
     /**
-     * @return {@link #fileArray}.
+     * @return {@link #fileList}.
      */
-    public File[] getFileArray() {
-        return fileArray;
+    public List<File> getFileList() {
+        return fileList;
     }
 
     /**
@@ -180,7 +215,7 @@ public class SrtDirectory {
      * @return {@link #newSrtPath}.
      */
     public String getNewSrtPath() {
-        return newSrtPath;
+        return newSrtPath != null ? newSrtPath : originalSrtFile.getPath();
     }
 
     /**

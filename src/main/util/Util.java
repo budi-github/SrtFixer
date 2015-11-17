@@ -70,6 +70,11 @@ public class Util {
         OutputStream outStream = null;
         File oldFile = new File(oldPath);
         File newFile = new File(newPath);
+        if (newFile.exists()) {
+            return;
+        }
+
+        System.out.println(String.format("Copying file at %s to %s", oldPath, newPath));
 
         inStream = new FileInputStream(oldFile);
         outStream = new FileOutputStream(newFile);
