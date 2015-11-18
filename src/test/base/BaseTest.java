@@ -39,6 +39,7 @@ import test.subtitle.fix.FixWebsitesTest;
 import test.subtitle.fix.fixMultipleLines.FixOneLineTest;
 import test.subtitle.fix.fixMultipleLines.FixThreeLinesTest;
 import test.subtitle.fix.fixMultipleLines.FixTwoLinesTest;
+import test.subtitle.fix.fixMultipleLines.FixUnbalancedDashesTest;
 import test.subtitle.fix.remove.RemoveCharacterNameTest;
 import test.subtitle.fix.remove.RemoveEmptyTest;
 import test.subtitle.misc.CorrectSentencesTest;
@@ -141,6 +142,7 @@ public abstract class BaseTest {
             TEST_COLLECTION.addAll(FixOneLineTest.testCollection());
             TEST_COLLECTION.addAll(FixThreeLinesTest.testCollection());
             TEST_COLLECTION.addAll(FixTwoLinesTest.testCollection());
+            TEST_COLLECTION.addAll(FixUnbalancedDashesTest.testCollection());
             TEST_COLLECTION.addAll(RemoveCharacterNameTest.testCollection());
             TEST_COLLECTION.addAll(RemoveEmptyTest.testCollection());
             TEST_COLLECTION.addAll(ChangeLsToIsTest.testCollection());

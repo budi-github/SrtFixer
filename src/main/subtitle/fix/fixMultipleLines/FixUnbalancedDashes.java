@@ -6,7 +6,7 @@ import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
 
 /**
- * 
+ * Fix unbalanced dashes.
  * 
  * @author budi
  */
@@ -19,7 +19,7 @@ public class FixUnbalancedDashes implements Fixer {
      * @return fixed text
      */
     public static String fix(String text) {
-        if (text == null || text.isEmpty() || !text.contains("-")) {
+        if (text == null || text.isEmpty() || StringUtil.count(text, '-') <= 1) {
             return text;
         }
 
@@ -49,6 +49,15 @@ public class FixUnbalancedDashes implements Fixer {
                     builder.append(second);
                     return builder.toString();
                 }
+            }
+        } else if (split.length == 1) {
+            int index = determineShouldSplit(text);
+            if (index > 0) {
+                StringBuilder builder = new StringBuilder();
+                builder.append(text.substring(0, index).trim());
+                builder.append('\n');
+                builder.append(text.substring(index).trim());
+                return builder.toString();
             }
         }
 
