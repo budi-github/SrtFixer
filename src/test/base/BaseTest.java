@@ -125,7 +125,9 @@ public abstract class BaseTest {
     protected abstract void subExclude();
 
     /**
-     * Exclude tests.
+     * Exclude specific tests.
+     * 
+     * @see #subExclude()
      */
     @Before
     public void exclude() {
@@ -134,7 +136,7 @@ public abstract class BaseTest {
     }
 
     /**
-     * @return {@link #TEST_COLLECTION}.
+     * @return {@link #TEST_COLLECTION}
      */
     @Parameters(name = "{3} -> {1}")
     public static Collection<Object[]> testCollection() {

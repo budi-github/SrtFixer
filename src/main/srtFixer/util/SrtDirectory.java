@@ -12,7 +12,7 @@ import main.util.Util;
 
 /**
  * Directory containing srt file.
- * 
+ * <p>
  * Contains file information and path locations of srt file(s) and media file.
  * 
  * @author budi
@@ -211,21 +211,21 @@ public class SrtDirectory {
     }
 
     /**
-     * @return {@link #path}.
+     * @return {@link #path}
      */
     public String getPath() {
         return path;
     }
 
     /**
-     * @return {@link #fileList}.
+     * @return {@link #fileList}
      */
     public List<File> getFileList() {
         return fileList;
     }
 
     /**
-     * @return {@link #mediaFile}.
+     * @return {@link #mediaFile}
      */
     public File getMediaFile() {
         return mediaFile;
@@ -240,14 +240,14 @@ public class SrtDirectory {
     }
 
     /**
-     * @return {@link #originalSrtFile}.
+     * @return {@link #originalSrtFile}
      */
     public File getOriginalSrtFile() {
         return originalSrtFile;
     }
 
     /**
-     * @return {@link #onlyContainsOriginalSrt}.
+     * @return {@link #onlyContainsOriginalSrt}
      */
     public boolean isOnlyContainsOriginalSrt() {
         return onlyContainsOriginalSrt;

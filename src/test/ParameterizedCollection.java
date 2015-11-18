@@ -8,7 +8,7 @@ import test.subtitle.BaseSubtitleTest;
 
 /**
  * Parameterized tests collection.
- * 
+ * <p>
  * This class abstracts away the otherwise complex steps to add a test to a
  * collection.
  * 
@@ -23,6 +23,7 @@ public class ParameterizedCollection {
 
     /**
      * Describes which {@link BaseSubtitleTest} class these tests come from.
+     * <p>
      * This value is used to exclude certain tests.
      */
     private final ClassContainer classContainer;

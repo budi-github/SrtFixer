@@ -19,6 +19,25 @@ public class SrtFixerUtil {
 
     /**
      * Parse srt file at path into list of {@link SubtitleObject}.
+     * <p>
+     * Format:
+     * <p>
+     * <code>id</code><br>
+     * <code>hr:min:sec:ms --> hr:min:sec:ms</code><br>
+     * <code>text</code><br>
+     * <code>[optional] text</code><br>
+     * <code>newline</code>
+     * <p>
+     * Example:
+     * <p>
+     * <code>1</code><br>
+     * <code>00:01:23,456 --> 00:01:26,654</code><br>
+     * <code>text text text</code>
+     * <p>
+     * <code>2</code><br>
+     * <code>00:02:00,100 --> 00:02:03,900</code><br>
+     * <code>more text text</code><br>
+     * <code>such text text</code>
      * 
      * @param path path to srt file
      * @return list of parsed {@link SubtitleObject}
@@ -27,7 +46,7 @@ public class SrtFixerUtil {
     public static List<SubtitleObject> parseSubtitleList(String path) throws IOException {
         List<SubtitleObject> subtitleList = new ArrayList<SubtitleObject>();
 
-        boolean findNumber = true, findTime = false, findText = false, done = false;
+        boolean expectNumber = true, expectTime = false, expectText = false, done = false;
         int count = 0;
         TimeHolder timeStart = null, timeEnd = null;
         String[] array;
@@ -36,23 +55,23 @@ public class SrtFixerUtil {
         List<String> lines = Util.readAllLines(path);
 
         for (String currentLine : lines) {
-            if (findNumber) {
+            if (expectNumber) {
                 if (currentLine.isEmpty()) {
                     continue;
                 }
                 ++count;
-                findNumber = false;
-                findTime = true;
-            } else if (findTime) {
+                expectNumber = false;
+                expectTime = true;
+            } else if (expectTime) {
                 array = RegexUtil.split(RegexEnum.TIME_ARROW, currentLine);
                 timeStart = new TimeHolder(array[0]);
                 timeEnd = new TimeHolder(array[1]);
-                findTime = false;
-                findText = true;
-            } else if (findText) {
+                expectTime = false;
+                expectText = true;
+            } else if (expectText) {
                 if (currentLine.isEmpty()) {
-                    findText = false;
-                    findNumber = true;
+                    expectText = false;
+                    expectNumber = true;
                     done = true;
                 } else {
                     builder.append(currentLine);

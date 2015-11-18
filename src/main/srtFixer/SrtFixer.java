@@ -96,10 +96,10 @@ public class SrtFixer {
             so.fix();
         }
 
-        handleInvalidFirstAndLastWords(subtitleList);
-        handleInvalidWords(subtitleList);
+        removeInvalidFirstAndLastWords(subtitleList);
+        removeInvalidWords(subtitleList);
 
-        handleResetIds(subtitleList);
+        updateIds(subtitleList);
 
         int changes = countAndPrintChanges(subtitleList);
 
@@ -157,7 +157,7 @@ public class SrtFixer {
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */
-    private static void handleInvalidFirstAndLastWords(List<SubtitleObject> subtitleList) {
+    private static void removeInvalidFirstAndLastWords(List<SubtitleObject> subtitleList) {
         int index = 0;
         while (subtitleList.size() > index) {
             SubtitleObject so = subtitleList.get(index);
@@ -192,7 +192,7 @@ public class SrtFixer {
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */
-    private static void handleInvalidWords(List<SubtitleObject> subtitleList) {
+    private static void removeInvalidWords(List<SubtitleObject> subtitleList) {
         for (SubtitleObject so : subtitleList) {
             if (SubtitleUtil.sentenceContainsWords(so.getText(), INVALID_WORDS)) {
                 so.clearText();
@@ -201,13 +201,13 @@ public class SrtFixer {
     }
 
     /**
-     * Handles reseting of id's.
+     * Updates ids.
      * <p>
      * If the {@link SubtitleObject}'s text is empty, the id will be set to -1.
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */
-    private static void handleResetIds(List<SubtitleObject> subtitleList) {
+    private static void updateIds(List<SubtitleObject> subtitleList) {
         int id = 0;
         for (SubtitleObject so : subtitleList) {
             String originalText = so.getOriginalText();

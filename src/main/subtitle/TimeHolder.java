@@ -14,10 +14,8 @@ import main.util.regex.RegexUtil;
  * <p>
  * Examples:
  * <p>
- * <code>01:23:45,678</code>
- * <p>
- * <code>00:00:00,000</code>
- * <p>
+ * <code>01:23:45,678</code><br>
+ * <code>00:00:00,000</code><br>
  * <code>99:59:59,999</code>
  * 
  * @author budi

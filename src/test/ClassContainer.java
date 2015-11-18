@@ -4,7 +4,7 @@ import test.subtitle.BaseSubtitleTest;
 
 /**
  * Class container.
- * 
+ * <p>
  * This is used to extract the name of the class.
  * 
  * @author budi

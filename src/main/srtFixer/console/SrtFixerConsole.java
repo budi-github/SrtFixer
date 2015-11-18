@@ -3,6 +3,7 @@ package main.srtFixer.console;
 import java.io.IOException;
 
 import main.srtFixer.SrtFixer;
+import main.srtFixer.util.SrtDirectory;
 
 /**
  * SrtFixer console application.
@@ -13,6 +14,8 @@ public class SrtFixerConsole {
 
     /**
      * Directory containing the srt file(s) and the media file.
+     * 
+     * @see SrtDirectory
      */
     private static final String DIRECTORY = "";
 
