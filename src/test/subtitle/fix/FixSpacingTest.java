@@ -65,7 +65,7 @@ public class FixSpacingTest extends BaseSubtitleTest {
 
         collection.add("I 'think?'");
 
-        collection.add("I \"love\" you", TestProperty.EXCLUDE_QUOTES);
+        collection.add("I \"love\" you", TestProperty.EXCLUDE_QUOTE_TEST);
         collection.add("\"Oh\",he said,\"No\"", "\"Oh\", he said, \"No\"");
         collection.add("Well...\"");
 
@@ -83,7 +83,7 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("by @prostatewhispers.");
         collection.add("by @ prostatewhispers.", "by @prostatewhispers.");
 
-        collection.add("Oh'.", TestProperty.EXCLUDE_QUOTES); // TODO: check quotes
+        collection.add("Oh'.", TestProperty.EXCLUDE_QUOTE_TEST); // TODO: check quotes
         collection.add("Oh, you need a donkey kickin' .", "Oh, you need a donkey kickin'.");
         collection.add("How you doin' , Deb?", "How you doin', Deb?");
 
@@ -92,8 +92,8 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("- Look at you. Hilarious.");
         collection.add("- Look at you.Hilarious.", "- Look at you. Hilarious.");
 
-        collection.add("# Music #", TestProperty.EXCLUDE_QUOTES);
-        collection.add("- # Boo! #\n- # Afternoon delight... #", TestProperty.EXCLUDE_QUOTES);
+        collection.add("# Music #", TestProperty.EXCLUDE_QUOTE_TEST);
+        collection.add("- # Boo! #\n- # Afternoon delight... #", TestProperty.EXCLUDE_QUOTE_TEST);
 
         return collection.getCollection();
     }

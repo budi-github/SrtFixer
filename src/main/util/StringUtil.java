@@ -117,7 +117,7 @@ public class StringUtil {
      * 
      * @param s string
      * @param c character to look for
-     * @return number of occurances of c in s
+     * @return Number of occurances of the character in the string.
      */
     public static int count(String s, char c) {
         if (s == null || s.isEmpty()) {
@@ -130,6 +130,7 @@ public class StringUtil {
                 ++count;
             }
         }
+
         return count;
     }
 
@@ -181,66 +182,72 @@ public class StringUtil {
     }
 
     /**
-     * Determines if string is punctuation.
+     * Determines if entire string is punctuation.
      * 
      * @param s string to check
-     * @return True if s is punctuation, otherwise false.
+     * @return True if entire string is punctuation, otherwise false.
      */
     public static boolean isPunctuation(String s) {
         if (s == null || s.isEmpty()) {
             return false;
         }
+
         for (char c : s.toCharArray()) {
             if (!isPunctuation(c)) {
                 return false;
             }
         }
+
         return true;
     }
 
     /**
-     * Determines if char is punctuation.
+     * Determines if the character is punctuation.
      * 
-     * @param c char to check.
-     * @return True if c is punctuation, otherwise false.
+     * @param c character to check.
+     * @return True if the character is punctuation, otherwise false.
      */
     public static boolean isPunctuation(char c) {
         return !Character.isAlphabetic(c) && !Character.isDigit(c) && !Character.isWhitespace(c);
     }
 
     /**
-     * Determines if string contains punctuation.
+     * Determines if the string contains punctuation.
      * 
      * @param s string to check
-     * @return True if s contains punctuation, otherwise false.
+     * @return True if the string contains punctuation, otherwise false.
      */
     public static boolean containsPunctuation(String s) {
         if (s == null || s.isEmpty()) {
             return false;
         }
+
         for (char c : s.toCharArray()) {
             if (!Character.isAlphabetic(c) && !Character.isDigit(c)) {
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * Determines if string is numeric.
+     * Determines if the string is numeric.
      * 
      * @param s string to check
-     * @return True if s is numeric, otherwise false.
+     * @return True if the string is numeric, otherwise false.
      */
     public static boolean isNumeric(String s) {
         if (s == null || s.isEmpty()) {
             return false;
         }
+
         for (char c : s.toCharArray()) {
             if (!Character.isDigit(c)) {
                 return false;
             }
         }
+
         return true;
     }
 

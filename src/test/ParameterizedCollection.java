@@ -7,8 +7,10 @@ import java.util.Collection;
 import test.subtitle.BaseSubtitleTest;
 
 /**
- * Parameterized tests collection. This class abstracts away the otherwise
- * complex steps to add a test to a collection.
+ * Parameterized tests collection.
+ * 
+ * This class abstracts away the otherwise complex steps to add a test to a
+ * collection.
  * 
  * @author budi
  */

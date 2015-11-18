@@ -60,8 +60,11 @@ public class Util {
     /**
      * Copy file at oldPath to newPath.
      * 
+     * If a file already exists at newPath, file at oldPath will NOT be copied.
+     * 
      * @param oldPath Old path to file. This file at this path will be copied.
-     * @param newPath New path to file. This is the location of the copied file.
+     * @param newPath New path to file. This will be the location of the new
+     *            copied file.
      * @throws IOException Occurs if any exceptions are thrown while reading the
      *             file or writing to the file.
      */
@@ -93,7 +96,7 @@ public class Util {
     /**
      * Get file extension of a specific file.
      * 
-     * @param file file
+     * @param file file to check
      * @return extension of file
      */
     public static String getFileExtension(File file) {
@@ -109,6 +112,8 @@ public class Util {
     /**
      * Read file at path. Returns list of lines split by '\n' character.
      * 
+     * Ensures file is in UTF-8.
+     * 
      * @param path path of file
      * @return List of lines split by '\n' character.
      * @throws IOException If a non UTF-8 character is found, this exception is
@@ -118,14 +123,14 @@ public class Util {
         List<String> lines = new ArrayList<String>();
 
         CharsetEncoder encoder = Charset.forName(StandardCharsets.ISO_8859_1.toString()).newEncoder();
-        boolean ignoreBOM = true;
+        boolean ignoreBOM = true; // https://en.wikipedia.org/wiki/Byte_order_mark
         BufferedReader br = null;
         String currentLine;
         int lineNumber = 1;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
             while ((currentLine = br.readLine()) != null) {
-                if (!encoder.canEncode(currentLine) && !ignoreBOM) {
+                if (!encoder.canEncode(currentLine) && !ignoreBOM) { // ensure line is UTF-8
                     throw new IOException(String.format("Line %d: \"%s\" not UTF-8", lineNumber, currentLine));
                 }
                 lines.add(currentLine.trim());

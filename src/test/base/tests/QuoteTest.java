@@ -97,7 +97,8 @@ public class QuoteTest extends BaseTest {
 
     @Override
     protected void subExclude() {
-        assumeFalse(EXCLUDE.contains(classContainer.getClazz()) || properties.contains(TestProperty.EXCLUDE_QUOTES));
+        assumeFalse(
+                EXCLUDE.contains(classContainer.getClazz()) || properties.contains(TestProperty.EXCLUDE_QUOTE_TEST));
     }
 
     /**

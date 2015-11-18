@@ -1,14 +1,14 @@
 package main.srtFixer.config;
 
 /**
- * Srt Fixer Configurations.
+ * SrtFixer configurations.
  * 
  * @author budi
  */
 public class SrtFixerConfig {
 
     /**
-     * Maximum (single) line length. 
+     * Maximum (single) line length.
      */
     public static final int MAX_LINE_LENGTH = 60;
 

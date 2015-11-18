@@ -12,17 +12,20 @@ import main.srtFixer.SrtFixer;
 public class SrtFixerConsole {
 
     /**
-     * Directory containing the media file and the srt file(s).
+     * Directory containing the srt file(s) and the media file.
      */
     private static final String DIRECTORY = "";
 
     /**
      * Flag to determine whether or not to resync the subtitle.
      * 
-     * If true, program will try to find old srt file, calculate previous
+     * If true, the program will resync the srt file with {@link #RESYNC}.
+     * 
+     * If false, the program will try to find old srt file, calculate previous
      * resynced value, and resync the new srt file with this value.
      * 
-     * If true and program cannot find old srt file, resync will default to 0.0.
+     * If false and program cannot find old srt file, resync will default to
+     * 0.0.
      */
     private static final boolean SHOULD_RESYNC = false;
 
@@ -38,7 +41,8 @@ public class SrtFixerConsole {
      * Main function. Launch the console application.
      * 
      * @param args unused
-     * @throws IOException
+     * @throws IOException Thrown if {@link #DIRECTORY} is not a directory or
+     *             program cannot find srt file.
      */
     public static void main(String[] args) throws IOException {
         long startTime = System.nanoTime();

@@ -25,7 +25,8 @@ public class SrtDirectory {
     private final static Set<String> MEDIA_FILE_EXTENSIONS;
 
     /**
-     * Old subtitles will potentially end in this.
+     * If only one srt file is found in directory, the copy will be copied and
+     * will end in this.
      */
     private static final String OLD_ENDING = " (Old).srt";
 
@@ -39,7 +40,7 @@ public class SrtDirectory {
     }
 
     /**
-     * Path to directory.
+     * Path to directory containing srt file and media file.
      */
     private String path;
 
@@ -50,16 +51,23 @@ public class SrtDirectory {
 
     /**
      * File containing media.
+     * 
+     * This will be used to rename srt file if necessary.
+     * 
+     * For example:
+     * 
+     * Given the files [A-media-file.mp4, ABC.srt], the media file's name will
+     * be used to name the resulting srt (A-media-file.srt).
      */
     private File mediaFile;
 
     /**
-     * Path containing new srt file.
+     * Path containing new (or resulting) srt file.
      */
     private String newSrtPath;
 
     /**
-     * Path containing original srt file.
+     * File containing original srt.
      */
     private File originalSrtFile;
 
@@ -73,7 +81,7 @@ public class SrtDirectory {
      * Class constructor.
      * 
      * @param path path to directory
-     * @throws IOException only thrown if path is not directory
+     * @throws IOException Only thrown if path is not directory.
      */
     public SrtDirectory(String path) throws IOException {
         File directory = new File(path);
@@ -84,8 +92,12 @@ public class SrtDirectory {
         this.path = path;
         File[] fileArray = directory.listFiles();
         this.fileList = Arrays.asList(fileArray);
+
+        // sort and reverse fileList so that when iterating through this list,
+        // the first srt file found will be the correctly identified.
         Collections.sort(fileList);
         Collections.reverse(fileList);
+
         analyze();
     }
 
@@ -137,7 +149,7 @@ public class SrtDirectory {
      * Given the files [A-media-file.mp4, A-media-file.srt], the original srt
      * file will be "A-media-file.srt".
      * 
-     * @throws IOException
+     * @throws IOException Only thrown if srt file is not found.
      */
     public void findOriginalSrtFile() throws IOException {
         if (mediaFile != null) {
@@ -176,15 +188,21 @@ public class SrtDirectory {
     /**
      * Generate path where srt file should be copied to.
      * 
+     * If {@link #newSrtPath} is not null, generate copy path with this file
+     * name. Else if {@link #originalSrtFile} is not null, generate copy path
+     * with this file name. Otherwise generate a default file name.
+     * 
      * @return path where srt file should be copied to.
      */
     public String generateCopySrtPath() {
-        String copyPath = "";
+        String copyPath;
         if (newSrtPath != null) {
             copyPath = newSrtPath.substring(0, newSrtPath.lastIndexOf('.'));
         } else if (originalSrtFile != null) {
             copyPath = originalSrtFile.getPath();
             copyPath = copyPath.substring(0, copyPath.lastIndexOf('.'));
+        } else {
+            copyPath = "Default";
         }
 
         return String.format("%s%s", copyPath, OLD_ENDING);
@@ -212,7 +230,8 @@ public class SrtDirectory {
     }
 
     /**
-     * @return {@link #newSrtPath}.
+     * @return {@link #newSrtPath} if not null, otherwise
+     *         {@link #originalSrtFile}'s path.
      */
     public String getNewSrtPath() {
         return newSrtPath != null ? newSrtPath : originalSrtFile.getPath();

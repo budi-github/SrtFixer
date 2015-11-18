@@ -122,6 +122,9 @@ public class SrtFixer {
     /**
      * Recalculate resync based on previous resync value found in path.
      * 
+     * This functions to keep previously calculated resynced value, so the user
+     * does not have to manually input a new resync value.
+     * 
      * @param subtitleList list of {@link SubtitleObject}
      * @param path path to new subtitle file
      * @param resync original time (in seconds) used to resync subtitle
@@ -146,8 +149,11 @@ public class SrtFixer {
     }
 
     /**
-     * Handles removal of all invalid words found within the first and last
+     * Handles clearing of all invalid words found within the first and last
      * lines of the subtitle file.
+     * 
+     * {@link SubtitleObject}s where invalid words are found will be cleared,
+     * and will not deleted from list.
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */
@@ -178,8 +184,11 @@ public class SrtFixer {
     }
 
     /**
-     * Handles removal of all invalid words found within the entire subtitle
+     * Handles clearing of all invalid words found within the entire subtitle
      * file.
+     * 
+     * {@link SubtitleObject}s where invalid words are found will be cleared,
+     * and will not deleted from list.
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */
@@ -193,6 +202,8 @@ public class SrtFixer {
 
     /**
      * Handles reseting of id's.
+     * 
+     * If the {@link SubtitleObject}'s text is empty, the id will be set to -1.
      * 
      * @param subtitleList list of {@link SubtitleObject}
      */

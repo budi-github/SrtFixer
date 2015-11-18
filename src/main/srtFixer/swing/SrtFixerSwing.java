@@ -5,14 +5,14 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- * Swing program launcher.
+ * SrtFixer Swing program launcher.
  * 
  * @author budi
  */
 public class SrtFixerSwing {
 
     /**
-     * Main function, Launch the swing application.
+     * Main function. Launch the swing application.
      * 
      * @param args unused
      */

@@ -8,10 +8,10 @@ package main.util;
 public class StringBuilderUtil {
 
     /**
-     * Delete space at index within StringBuilder
+     * Delete space at index within {@link StringBuilder}.
      * 
-     * @param builder StringBuilder object
-     * @param index position of space within StringBuilder
+     * @param builder {@link StringBuilder}
+     * @param index position of space
      */
     public static void deleteSpaceAt(StringBuilder builder, int index) {
         assert builder.charAt(index) == ' ';
@@ -19,10 +19,11 @@ public class StringBuilderUtil {
     }
 
     /**
-     * Delete only if space at index within StringBuilder
+     * Delete at index only if the character is a space within
+     * {@link StringBuilder}.
      * 
-     * @param builder StringBuilder object
-     * @param index position of space within StringBuilder
+     * @param builder {@link StringBuilder}
+     * @param index position of space
      */
     public static void deleteOnlyIfSpaceAt(StringBuilder builder, int index) {
         if (builder.charAt(index) == ' ') {
@@ -31,10 +32,10 @@ public class StringBuilderUtil {
     }
 
     /**
-     * Capitalize character at index
+     * Capitalize character at index.
      * 
-     * @param builder StringBuilder object
-     * @param index position within StringBuilder
+     * @param builder {@link StringBuilder}
+     * @param index position of character to be capitalized.
      */
     public static void capitalizeAt(StringBuilder builder, int index) {
         char c = builder.charAt(index);

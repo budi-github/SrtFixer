@@ -3,7 +3,9 @@ package test;
 import test.subtitle.BaseSubtitleTest;
 
 /**
- * Class container. This is used to extract basic class info, such as name.
+ * Class container.
+ * 
+ * This is used to extract the name of the class.
  * 
  * @author budi
  */

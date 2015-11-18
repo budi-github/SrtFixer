@@ -1,21 +1,23 @@
 package test;
 
+import test.base.tests.QuoteTest;
+
 /**
  * Enum of all test properties.
  * 
  * <li>{@link #ALL}</li>
- * <li>{@link #EXCLUDE_QUOTES}</li>
+ * <li>{@link #EXCLUDE_QUOTE_TEST}</li>
  * 
  * @author budi
  */
 public enum TestProperty {
     /**
-     * Test all from suite.
+     * Test all tests in suite.
      */
     ALL,
 
     /**
-     * Exclude quote test.
+     * Exclude {@link QuoteTest}.
      */
-    EXCLUDE_QUOTES
+    EXCLUDE_QUOTE_TEST
 }

@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import main.srtFixer.SrtFixer;
 
 /**
- * Swing view.
+ * SrtFixer Swing view.
  * 
  * @author budi
  */
@@ -30,13 +30,13 @@ public class SwingView extends JFrame implements PropertyChangeListener {
     /**
      * Application name.
      */
-    private static final String applicationName = "Srt Fixer";
+    private static final String applicationName = "SrtFixer";
 
     /**
      * Help label text.
      */
     private static final String helpLabelText =
-            "~~~ If the subtitles appear too FAST, INCREASE offset. ~~~ If the subtitles appear too SLOW, DECREASE offset. ~~~";
+            "~~~ If the subtitles appear too FAST, INCREASE time. ~~~ If the subtitles appear too SLOW, DECREASE time. ~~~";
 
     /**
      * Media {@link JLabel}.
