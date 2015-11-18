@@ -6,14 +6,12 @@ import java.util.Set;
 /**
  * Exceptions to lines that are incorrectly or not fixed in the program.
  * 
- * This class will eventually be deleted once all bugs are found.
- * 
  * @author budi
  */
 public class DoNotFix {
 
     /**
-     * Set of correct lines that are interpreted as incorrect.
+     * Set of correct lines that are interpreted to be incorrect.
      */
     public static final Set<String> DO_NOT_FIX;
 

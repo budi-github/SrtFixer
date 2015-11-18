@@ -18,12 +18,12 @@ public class SrtFixerConsole {
 
     /**
      * Flag to determine whether or not to resync the subtitle.
-     * 
+     * <p>
      * If true, the program will resync the srt file with {@link #RESYNC}.
-     * 
+     * <p>
      * If false, the program will try to find old srt file, calculate previous
      * resynced value, and resync the new srt file with this value.
-     * 
+     * <p>
      * If false and program cannot find old srt file, resync will default to
      * 0.0.
      */
@@ -31,9 +31,10 @@ public class SrtFixerConsole {
 
     /**
      * Time (in seconds) used to resync subtitle.
-     * 
-     * If the subtitles appear too FAST, INCREASE resync. If the subtitles
-     * appear too SLOW, DECREASE resync.
+     * <p>
+     * If the subtitles appear too FAST, INCREASE resync.
+     * <p>
+     * If the subtitles appear too SLOW, DECREASE resync.
      */
     private static final double RESYNC = 0.0;
 

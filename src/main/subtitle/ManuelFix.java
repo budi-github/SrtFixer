@@ -6,8 +6,6 @@ import java.util.Map;
 /**
  * Exceptions to lines that are incorrectly or not fixed in the program.
  * 
- * This class will eventually be deleted once all bugs are found.
- * 
  * @author budi
  */
 public class ManuelFix {

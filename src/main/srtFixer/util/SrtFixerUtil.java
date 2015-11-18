@@ -66,7 +66,7 @@ public class SrtFixerUtil {
             }
         }
 
-        // rare case when srt is malformed, any trailing text will be kept. 
+        // rare case when last line in srt is malformed, any trailing text will be kept.
         if (builder.length() > 0) {
             subtitleList.add(new SubtitleObject(count, timeStart, timeEnd, builder.toString()));
         }

@@ -92,7 +92,7 @@ public class FixMisplacedQuotes implements Fixer {
                         addSpace = false;
                     } else if ((APPEND_QUOTE.contains(prevPrev)
                             || (prevPrev.endsWith("in") && !prevPrev.equalsIgnoreCase("in")))
-                            || prevPrev.endsWith("s") && !PREPEND_QUOTE.contains(current)) { // TODO: somethings wrong
+                            || prevPrev.endsWith("s") && !PREPEND_QUOTE.contains(current)) { // TODO: something's wrong
                         builder.deleteCharAt(builder.length() - 2);
                     } else if (PREPEND_QUOTE.contains(current) || StringUtil.isNumeric(current.replace("s", ""))) {
                         addSpace = false;

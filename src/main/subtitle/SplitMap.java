@@ -2,12 +2,18 @@ package main.subtitle;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
 
 /**
- * This class functions as a caching mechanism for String.split.
+ * Split Map.
+ * <p>
+ * This class functions as a caching mechanism for splitting a string into a
+ * list by a {@link Pattern} or string. If a string was previously split, and
+ * split is called again on the string, if the string was not modified, this map
+ * will return the cached split list value.
  * 
  * @author budi
  */

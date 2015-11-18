@@ -6,9 +6,16 @@ import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
 
 /**
- * Prepare line.
- * 
- * Used to prepare tokenization of line.
+ * Prepare line for tokenization.
+ * <p>
+ * Allows for splitting line by both spaces and punctuation, removing any excess
+ * spaces as necessary.
+ * <p>
+ * For example:
+ * <p>
+ * The string <code>"  A.  K .A."</code> will be fixed to the string
+ * <code>"A . K . A."</code>. Spliting this string by a space, returns the list
+ * <code>["A", ".", "K", ".", "A", "."]</code>.
  * 
  * @author budi
  */
@@ -45,7 +52,7 @@ public class PrepareLine implements Fixer {
     }
 
     /**
-     * Remove excess space from line.
+     * Remove excess (2+ consecutive) spaces from line.
      * 
      * @param line line to fix
      * @param so {@link SubtitleObject}

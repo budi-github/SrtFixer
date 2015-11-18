@@ -26,7 +26,7 @@ public class SrtFixer {
 
     /**
      * Set of all invalid words.
-     * 
+     * <p>
      * If any invalid word is found within any line, the line is removed.
      */
     private static final Set<String> INVALID_WORDS;
@@ -34,7 +34,7 @@ public class SrtFixer {
     /**
      * Set of all invalid words, only occuring in the beginning or end of the
      * srt file.
-     * 
+     * <p>
      * If any invalid word is found within these lines, the line is removed.
      */
     private static final Set<String> INVALID_FIRST_LAST_WORDS;
@@ -121,7 +121,7 @@ public class SrtFixer {
 
     /**
      * Recalculate resync based on previous resync value found in path.
-     * 
+     * <p>
      * This functions to keep previously calculated resynced value, so the user
      * does not have to manually input a new resync value.
      * 
@@ -151,7 +151,7 @@ public class SrtFixer {
     /**
      * Handles clearing of all invalid words found within the first and last
      * lines of the subtitle file.
-     * 
+     * <p>
      * {@link SubtitleObject}s where invalid words are found will be cleared,
      * and will not deleted from list.
      * 
@@ -186,7 +186,7 @@ public class SrtFixer {
     /**
      * Handles clearing of all invalid words found within the entire subtitle
      * file.
-     * 
+     * <p>
      * {@link SubtitleObject}s where invalid words are found will be cleared,
      * and will not deleted from list.
      * 
@@ -202,7 +202,7 @@ public class SrtFixer {
 
     /**
      * Handles reseting of id's.
-     * 
+     * <p>
      * If the {@link SubtitleObject}'s text is empty, the id will be set to -1.
      * 
      * @param subtitleList list of {@link SubtitleObject}
@@ -225,10 +225,11 @@ public class SrtFixer {
     }
 
     /**
-     * Counts numbers of changes and prints changes to console.
+     * Counts numbers of changes compared to the original srt file and prints
+     * changes to console.
      * 
      * @param subtitleList list of {@link SubtitleObject}
-     * @return number of changes
+     * @return number of changes compared to the original srt file
      */
     private static int countAndPrintChanges(List<SubtitleObject> subtitleList) {
         int changes = 0;

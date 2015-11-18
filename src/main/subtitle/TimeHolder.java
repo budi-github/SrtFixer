@@ -7,6 +7,18 @@ import main.util.regex.RegexUtil;
 
 /**
  * Contains time used for standard .srt files.
+ * <p>
+ * Format:
+ * <p>
+ * <code>hr:min:sec,ms</code>
+ * <p>
+ * Examples:
+ * <p>
+ * <code>01:23:45,678</code>
+ * <p>
+ * <code>00:00:00,000</code>
+ * <p>
+ * <code>99:59:59,999</code>
  * 
  * @author budi
  */
@@ -50,7 +62,7 @@ public class TimeHolder {
     /**
      * Class constructor.
      * 
-     * @param string string to parse
+     * @param string time string to parse
      * @throws IOException Only thrown if string to parse is malformed.
      */
     public TimeHolder(String string) throws IOException {
@@ -123,9 +135,9 @@ public class TimeHolder {
     }
 
     /**
-     * Calculate time in milliseconds.
+     * Calculate total time in milliseconds.
      * 
-     * @return time in milliseconds
+     * @return total time in milliseconds
      */
     public int calcTotalTimeMs() {
         return (hour * HOURS_TO_MILLISECONDS) + (minute * MINUTES_TO_MILLISECONDS) + (second * SECONDS_TO_MILLISECONDS)

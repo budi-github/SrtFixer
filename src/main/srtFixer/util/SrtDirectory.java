@@ -51,13 +51,14 @@ public class SrtDirectory {
 
     /**
      * File containing media.
-     * 
+     * <p>
      * This will be used to rename srt file if necessary.
-     * 
+     * <p>
      * For example:
-     * 
-     * Given the files [A-media-file.mp4, ABC.srt], the media file's name will
-     * be used to name the resulting srt (A-media-file.srt).
+     * <p>
+     * Given the files <code>[A-media-file.mp4, ABC.srt]</code>, the media
+     * file's name will be used to name the resulting srt:
+     * <code>A-media-file.srt</code>.
      */
     private File mediaFile;
 
@@ -137,17 +138,18 @@ public class SrtDirectory {
 
     /**
      * Find original srt file in directory.
-     * 
+     * <p>
      * Original srt will first default to an srt file that is NOT the current
      * srt used for the current media.
-     * 
+     * <p>
      * For example:
-     * 
-     * Given the files [A-media-file.mp4, A-media-file.srt, ABC.srt], the
-     * original srt file will be "ABC.srt".
-     * 
-     * Given the files [A-media-file.mp4, A-media-file.srt], the original srt
-     * file will be "A-media-file.srt".
+     * <p>
+     * Given the files
+     * <code>[A-media-file.mp4, A-media-file.srt, ABC.srt]</code>, the original
+     * srt file will be <code>ABC.srt</code>.
+     * <p>
+     * Given the files <code>[A-media-file.mp4, A-media-file.srt]</code>, the
+     * original srt file will be <code>A-media-file.srt</code>.
      * 
      * @throws IOException Only thrown if srt file is not found.
      */
@@ -187,7 +189,7 @@ public class SrtDirectory {
 
     /**
      * Generate path where srt file should be copied to.
-     * 
+     * <p>
      * If {@link #newSrtPath} is not null, generate copy path with this file
      * name. Else if {@link #originalSrtFile} is not null, generate copy path
      * with this file name. Otherwise generate a default file name.

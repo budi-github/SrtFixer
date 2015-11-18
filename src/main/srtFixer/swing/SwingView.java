@@ -64,7 +64,7 @@ public class SwingView extends JFrame implements PropertyChangeListener {
     private static final JLabel helpLabel = new JLabel(helpLabelText);
 
     /**
-     * Fix Button {@link JButton}.
+     * Fix {@link JButton}.
      */
     private static final JButton fixButton = new JButton("Fix!");
 

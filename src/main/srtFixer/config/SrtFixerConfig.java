@@ -14,7 +14,7 @@ public class SrtFixerConfig {
 
     /**
      * Balance weight of line.
-     * 
+     * <p>
      * Only for cases where a subtitle text spans two lines, if either line's
      * length is less than the other line's length multiplied this number, the
      * program will attempt to "balance" both lines.
