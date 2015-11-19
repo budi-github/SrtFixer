@@ -1,5 +1,6 @@
 package test;
 
+import main.srtFixer.config.SrtFixerConfig;
 import test.base.tests.QuoteTest;
 
 /**
@@ -17,7 +18,19 @@ public enum TestProperty {
     ALL,
 
     /**
+     * Test only if {@link SrtFixerConfig#isToggleCorrectCapitalization()} is
+     * true.
+     */
+    CAPITALIZE_ONLY,
+
+    /**
+     * Exclude if {@link SrtFixerConfig#isToggleCorrectCapitalization()} is
+     * true.
+     */
+    EXCLUDE_CAPITALIZE,
+
+    /**
      * Exclude {@link QuoteTest}.
      */
-    EXCLUDE_QUOTE_TEST
+    EXCLUDE_QUOTE_TEST;
 }

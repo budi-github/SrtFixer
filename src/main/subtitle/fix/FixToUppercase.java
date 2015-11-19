@@ -51,6 +51,7 @@ public class FixToUppercase implements Fixer {
             switch (current) {
             case "ok":
             case "i":
+            case "id":
             case "usa":
                 split[i] = split[i].toUpperCase();
                 break;

@@ -52,13 +52,17 @@ public class FixNumbersTest extends BaseSubtitleTest {
         collection.add("7. 77, December 25, 2015", "7.77, December 25, 2015");
         collection.add("7 .77, December 25, 2015", "7.77, December 25, 2015");
 
+        collection.add("100.0% sure");
+        collection.add("100 .0% sure", "100.0% sure");
+        collection.add("100. 0% sure", "100.0% sure");
+
         collection.add("$100,000", "$100,000");
         collection.add("$100, 000", "$100,000");
         collection.add("$43. 125 million,", "$43.125 million,");
 
         collection.add("100 times, 200 times", "100 times, 200 times");
-        collection.add("It's... We've had that\nargument, like, 100 times.",
-                "It's... We've had that\nargument, like, 100 times.");
+        collection.add("It's... we've had that\nargument, like, 100 times.",
+                "It's... we've had that\nargument, like, 100 times.");
 
         return collection.getCollection();
     }

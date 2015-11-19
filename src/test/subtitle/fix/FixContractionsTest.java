@@ -39,7 +39,7 @@ public class FixContractionsTest extends BaseSubtitleTest {
         collection.add("It's its not it's.");
 
         collection.add("'What' do you mean?");
-        collection.add("Let's-Let's go!");
+        collection.add("Let's-let's go!");
 
         collection.add("Hey. Y 'all mind if I roll with you?", "Hey. Y'all mind if I roll with you?");
 

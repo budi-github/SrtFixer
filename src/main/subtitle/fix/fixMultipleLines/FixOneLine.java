@@ -25,7 +25,7 @@ public class FixOneLine implements Fixer {
      */
     public static String fix(String line) {
         if (line == null || line.isEmpty() || StringUtil.count(line, '\n') != 0
-                || line.length() < SrtFixerConfig.MAX_LINE_LENGTH) {
+                || line.length() < SrtFixerConfig.getMaxLineLength()) {
             return line;
         }
 
@@ -42,8 +42,8 @@ public class FixOneLine implements Fixer {
         if (balanced != null) {
             String balancedString = balanced.toString();
             String[] split = RegexUtil.split(RegexEnum.NEWLINE, balancedString);
-            if (Math.abs(split[0].length() - split[1].length())
-                    / (float) balancedString.length() < SrtFixerConfig.BALANCE_WEIGHT) {
+            if (Math.abs(split[0].length() - split[1].length()) / (float) balancedString.length() < SrtFixerConfig
+                    .getBalanceWeight()) {
                 return FixTwoLines.fix(balancedString);
             }
         }

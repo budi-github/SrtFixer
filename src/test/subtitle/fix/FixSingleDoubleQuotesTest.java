@@ -26,8 +26,8 @@ public class FixSingleDoubleQuotesTest extends BaseSubtitleTest {
         collection.add("'''Hello World'''", "\"Hello World\"");
         collection.add("\"Hello World\"", "\"Hello World\"");
         collection.add("'''It's me.''''", "\"It's me.\"");
-        collection.add("''''Oh'', he said, ''No'''", "\"Oh\", he said, \"No\"");
-        collection.add("''This''' Is ''Fine''", "\"This\" Is \"Fine\"");
+        collection.add("''''Oh'', he said, ''no'''", "\"Oh\", he said, \"no\"");
+        collection.add("''This''' is ''fine''", "\"This\" is \"fine\"");
 
         collection.add("\"Hmm' '", "\"Hmm\"");
         collection.add("\"Wow.\nSuch wow.' '", "\"Wow.\nSuch wow.\"");

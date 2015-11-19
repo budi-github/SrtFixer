@@ -34,7 +34,7 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("Hello : World", "Hello: World");
 
         collection.add("He ...", "He...");
-        collection.add("Hello ... Hello", "Hello... Hello");
+        collection.add("Hello ... hello", "Hello... hello");
         collection.add("Hello ...World", "Hello... World");
         collection.add("What... is ...life?", "What... is... life?");
 
@@ -44,14 +44,14 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("Jonathan 's", "Jonathan's");
         collection.add("3 o'clock.");
 
-        collection.add("Dash-Dash");
-        collection.add("Dash - Dash", "Dash-Dash");
-        collection.add("Dash-Dash-Dash");
-        collection.add("Dash -Dash-Dash", "Dash-Dash-Dash");
-        collection.add("Dash -Dash -Dash", "Dash-Dash-Dash");
-        collection.add("Dash -Dash- Dash", "Dash-Dash-Dash");
-        collection.add("Dash-Dash - Dash", "Dash-Dash-Dash");
-        collection.add("Dash - Dash-Dash", "Dash-Dash-Dash");
+        collection.add("Dash-dash");
+        collection.add("Dash - dash", "Dash-dash");
+        collection.add("Dash-dash-dash");
+        collection.add("Dash -dash-dash", "Dash-dash-dash");
+        collection.add("Dash -dash -dash", "Dash-dash-dash");
+        collection.add("Dash -dash- dash", "Dash-dash-dash");
+        collection.add("Dash-dash - dash", "Dash-dash-dash");
+        collection.add("Dash - dash-dash", "Dash-dash-dash");
 
         collection.add("The thing is-- I don't know");
         collection.add("She-- I don't--");
@@ -66,7 +66,7 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("I 'think?'");
 
         collection.add("I \"love\" you", TestProperty.EXCLUDE_QUOTE_TEST);
-        collection.add("\"Oh\",he said,\"No\"", "\"Oh\", he said, \"No\"");
+        collection.add("\"Oh\",he said,\"no\"", "\"Oh\", he said, \"no\"");
         collection.add("Well...\"");
 
         collection.add("1 , 2 , 3", "1, 2, 3");

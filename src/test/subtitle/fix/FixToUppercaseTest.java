@@ -20,6 +20,7 @@ public class FixToUppercaseTest extends BaseSubtitleTest {
      */
     public static Collection<Object[]> testCollection() {
         ParameterizedCollection collection = new ParameterizedCollection(FixToUppercaseTest.class);
+
         collection.add("ok", "OK");
         collection.add("Ok", "OK");
         collection.add("OK", "OK");
@@ -43,4 +44,5 @@ public class FixToUppercaseTest extends BaseSubtitleTest {
         //collection.add("ok usa, i'm ok", "OK USA, I'm OK", TestProperty.EXCLUDE_ORIGINAL);
         return collection.getCollection();
     }
+
 }

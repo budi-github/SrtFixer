@@ -135,6 +135,27 @@ public class StringUtil {
     }
 
     /**
+     * Count the number of occurances of uppercase letters in string.
+     * 
+     * @param s string
+     * @return number of occurances of uppercase letters in the string
+     */
+    public static int countUppercase(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+
+        int count = 0;
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                ++count;
+            }
+        }
+
+        return count;
+    }
+
+    /**
      * Replace last.
      * 
      * @param s string to fix
@@ -229,6 +250,30 @@ public class StringUtil {
         }
 
         return false;
+    }
+
+    /**
+     * Determines if the string contains both letters and numbers.
+     * 
+     * @param s string to check
+     * @return True if string contains both letters and numbers, otherwise
+     *         false.
+     */
+    public static boolean containsLettersAndNumbers(String s) {
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
+
+        boolean hasLetter = false, hasNumber = false;
+        for (char c : s.toCharArray()) {
+            if (Character.isAlphabetic(c)) {
+                hasLetter = true;
+            } else if (Character.isDigit(c)) {
+                hasNumber = true;
+            }
+        }
+
+        return hasLetter && hasNumber;
     }
 
     /**

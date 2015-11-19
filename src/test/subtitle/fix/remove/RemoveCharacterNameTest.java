@@ -27,7 +27,7 @@ public class RemoveCharacterNameTest extends BaseSubtitleTest {
         collection.add("LEO: ...I haven't won an Oscar...", "...I haven't won an Oscar...");
         collection.add("1 GUY: 9:00", "9:00");
         collection.add("GUY 2: We like sportz", "We like sportz");
-        collection.add("CP3O: Beep Boop", "Beep Boop");
+        collection.add("CP3O: Beep boop", "Beep boop");
 
         collection.add("I know this:");
         collection.add("I know this: the end is near.");

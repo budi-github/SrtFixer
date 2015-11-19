@@ -32,8 +32,8 @@ public class FixTwoLines implements Fixer {
             String first = split[0];
             String second = split[1];
             if (!first.startsWith("-") && !second.startsWith("-")) {
-                if (first.length() > SrtFixerConfig.MAX_LINE_LENGTH
-                        || second.length() > SrtFixerConfig.MAX_LINE_LENGTH) {
+                if (first.length() > SrtFixerConfig.getMaxLineLength()
+                        || second.length() > SrtFixerConfig.getMaxLineLength()) {
                     return SubtitleUtil.splitClosestToMiddle(text, ' ').toString();
                 }
             }
@@ -42,9 +42,11 @@ public class FixTwoLines implements Fixer {
                 builder.append(first.trim());
                 builder.append(' ');
                 int index = second.indexOf('"');
-                builder.append(second.substring(0, index + 1));
+                builder.append(second.substring(0, index).trim());
+                builder.append('\"');
                 builder.append('\n');
-                builder.append(second.substring(index + 2));
+                builder.append('\"');
+                builder.append(second.substring(index + 2).trim());
                 return builder.toString();
             } else if (StringUtil.count(first, '\"') == 3 && StringUtil.count(second, '\"') == 1) {
                 StringBuilder builder = new StringBuilder();

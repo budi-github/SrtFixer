@@ -1,9 +1,11 @@
 package main.subtitle;
 
+import main.srtFixer.config.SrtFixerConfig;
 import main.subtitle.fix.ChangeLsToIs;
 import main.subtitle.fix.FixAbbreviations;
 import main.subtitle.fix.FixAcronym;
 import main.subtitle.fix.FixAmpersand;
+import main.subtitle.fix.FixCapitalization;
 import main.subtitle.fix.FixCommonErrors;
 import main.subtitle.fix.FixContractions;
 import main.subtitle.fix.FixDashes;
@@ -138,21 +140,21 @@ public class SubtitleObject {
         text = FixUnbalancedDashes.fix(text);
         boolean fixedUnbalancedDashes = !originalText.equals(text);
 
-        text = FixThreeLines.fix(text);
-        text = FixTwoLines.fix(text);
-        text = FixOneLine.fix(text);
-
         for (String line : RegexUtil.split(RegexEnum.NEWLINE, text)) { // TODO: if contains punctuation
             splitMap.clear();
             line = PrepareLine.fix(line, this);
             split(RegexEnum.SPACE, line);
-
+            line = RemoveCharacterName.fix(line, this);
             line = FixSpelling.fix(line, this);
-            line = FixToUppercase.fix(line, this);
+            if (!SrtFixerConfig.isToggleCorrectCapitalization()) {
+                line = FixToUppercase.fix(line, this); // TODO: remove this once all bugs in FixCapitalization is fixed
+            }
             line = ChangeLsToIs.fix(line, this);
             line = FixDashes.fix(line, this);
-            line = RemoveCharacterName.fix(line, this);
             line = RemoveEmpty.fix(line, this);
+            if (SrtFixerConfig.isToggleCorrectCapitalization()) {
+                line = FixCapitalization.fix(line, this);
+            }
             line = FixAmpersand.fix(line, this);
             line = FixHeight.fix(line, this);
             line = FixWebsites.fix(line, this);
@@ -191,6 +193,11 @@ public class SubtitleObject {
         result = result.trim();
 
         result = FixMultilineQuotes.fix(result, this);
+
+        result = FixThreeLines.fix(result);
+        result = FixTwoLines.fix(result);
+        result = FixOneLine.fix(result);
+
         if (StringUtil.count(originalText, '\n') <= 1 && SubtitleUtil.isApproximatelyEqual(result, originalText)
                 && !fixedUnbalancedDashes) {
             result = originalText;

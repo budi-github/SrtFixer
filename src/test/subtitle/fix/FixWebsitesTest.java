@@ -31,7 +31,6 @@ public class FixWebsitesTest extends BaseSubtitleTest {
         collection.add("BeautifulHandwrittenLetters . com,", "BeautifulHandwrittenLetters.com,");
 
         collection.add("Hey. Come on.");
-        collection.add("Hey. come on.");
 
         return collection.getCollection();
     }

@@ -35,7 +35,7 @@ public class FixWebsites implements Fixer {
             temp = SubtitleObject.clearMapIfChanged(so, temp, line);
         }
 
-        if (line.contains(". com")) {
+        if (line.toLowerCase().contains(". com")) {
             line = fixDotCom(line, so);
             temp = SubtitleObject.clearMapIfChanged(so, temp, line);
         }
@@ -98,6 +98,7 @@ public class FixWebsites implements Fixer {
 
             if (prev != null && prev.equals(".")) {
                 if (current.equalsIgnoreCase("com")) {
+                    current = "com";
                     builder.deleteCharAt(builder.length() - 2);
                     addSpace = false;
                 }

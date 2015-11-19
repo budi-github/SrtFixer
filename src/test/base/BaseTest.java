@@ -11,6 +11,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.runners.Parameterized.Parameters;
 
+import main.srtFixer.config.SrtFixerConfig;
 import main.subtitle.SubtitleObject;
 import test.ClassContainer;
 import test.TestProperty;
@@ -20,6 +21,7 @@ import test.subtitle.fix.ChangeLsToIsTest;
 import test.subtitle.fix.FixAbbreviationsTest;
 import test.subtitle.fix.FixAcronymTest;
 import test.subtitle.fix.FixAmpersandTest;
+import test.subtitle.fix.FixCapitalizationTest;
 import test.subtitle.fix.FixCommonErrorsTest;
 import test.subtitle.fix.FixContractionsTest;
 import test.subtitle.fix.FixDashesTest;
@@ -131,7 +133,11 @@ public abstract class BaseTest {
      */
     @Before
     public void exclude() {
-        assumeFalse(!getClass().equals(OriginalTest.class) && TEST_ORIGINAL.contains(classContainer.getClazz()));
+        assumeFalse((!getClass().equals(OriginalTest.class) && TEST_ORIGINAL.contains(classContainer.getClazz()))
+                || (SrtFixerConfig.isToggleCorrectCapitalization()
+                        && properties.contains(TestProperty.EXCLUDE_CAPITALIZE))
+                || (!SrtFixerConfig.isToggleCorrectCapitalization()
+                        && properties.contains(TestProperty.CAPITALIZE_ONLY)));
         subExclude();
     }
 
@@ -151,6 +157,7 @@ public abstract class BaseTest {
             TEST_COLLECTION.addAll(FixAbbreviationsTest.testCollection());
             TEST_COLLECTION.addAll(FixAcronymTest.testCollection());
             TEST_COLLECTION.addAll(FixAmpersandTest.testCollection());
+            TEST_COLLECTION.addAll(FixCapitalizationTest.testCollection());
             TEST_COLLECTION.addAll(FixCommonErrorsTest.testCollection());
             TEST_COLLECTION.addAll(FixContractionsTest.testCollection());
             TEST_COLLECTION.addAll(FixDashesTest.testCollection());

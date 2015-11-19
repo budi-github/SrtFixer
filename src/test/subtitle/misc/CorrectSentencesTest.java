@@ -23,7 +23,7 @@ public class CorrectSentencesTest extends BaseSubtitleTest {
         ParameterizedCollection collection = new ParameterizedCollection(CorrectSentencesTest.class);
         collection.add("Hi.");
         collection.add("It's me. It is me.");
-        collection.add("AHHH!");
+        collection.add("Ahhh!");
 
         collection.add("Hello, my name is Joe.");
 

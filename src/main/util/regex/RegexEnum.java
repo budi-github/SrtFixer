@@ -40,6 +40,11 @@ public enum RegexEnum {
     ENDS_WITH_PUNCTUATION("[\\p{P}]+$"),
 
     /**
+     * Matches exactly 1 or more digits followed by an s.
+     */
+    MATCH_DIGIT_AND_S("^[\\d]+s$"),
+
+    /**
      * Matches sequence of punctuation and/or space.
      */
     MATCH_PUNCTUATION_AND_SPACE("[\\p{P} ]+"),

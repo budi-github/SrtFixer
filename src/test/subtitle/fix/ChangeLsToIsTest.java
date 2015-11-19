@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import main.subtitle.fix.ChangeLsToIs;
 import test.ParameterizedCollection;
+import test.TestProperty;
 import test.subtitle.BaseSubtitleTest;
 
 /**
@@ -28,14 +29,14 @@ public class ChangeLsToIsTest extends BaseSubtitleTest {
         collection.add("I'll");
         collection.add("lll", "Ill");
         collection.add("l'll", "I'll");
-        collection.add("l'll lll", "I'll Ill");
+        collection.add("l'll lll", "I'll Ill", TestProperty.EXCLUDE_CAPITALIZE);
 
         collection.add("l'm Bob", "I'm Bob");
-        collection.add("l'm ln", "I'm In");
+        collection.add("l'm ln", "I'm In", TestProperty.EXCLUDE_CAPITALIZE);
 
         collection.add("lt's me", "It's me");
         collection.add("lt's not it's", "It's not it's");
-        collection.add("lt's lt's lts lts", "It's It's Its Its");
+        collection.add("lt's lt's lts lts", "It's It's Its Its", TestProperty.EXCLUDE_CAPITALIZE);
 
         collection.add("l am who l am", "I am who I am");
         collection.add("l am who l've been", "I am who I've been");
