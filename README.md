@@ -11,8 +11,8 @@ SrtFixer fixes these problems and then some.
 ## Features
 
 * Fix all formatting errors
-* Balance long single lines, 3+ lines
 * Resync subtitles
+* Balance long single lines, 3+ lines
 * Remove hearing impaired text (HI)
 * Remove html tags
 * Fix common spelling and grammar errors
