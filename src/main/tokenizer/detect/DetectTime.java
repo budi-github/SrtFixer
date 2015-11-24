@@ -40,8 +40,13 @@ public class DetectTime {
                         properties = TokenProperties.mergeTokenProperties(properties, currentToken);
                         properties.addProperty(TokenProperty.TIME);
                         properties.addProperty(TokenProperty.WORD); // TODO: does it need this?
-                        tokens.set(i - 2, new Token(
-                                prevPrevToken.toString() + prevToken.toString() + currentToken.toString(), properties));
+
+                        StringBuilder builder = new StringBuilder();
+                        builder.append(prevPrevToken);
+                        builder.append(prevToken);
+                        builder.append(currentToken);
+
+                        tokens.set(i - 2, new Token(builder.toString(), properties));
                     }
                 }
             }

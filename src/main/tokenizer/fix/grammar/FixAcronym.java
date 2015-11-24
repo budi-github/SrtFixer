@@ -28,31 +28,31 @@ public class FixAcronym {
     }
 
     /**
-     * Fix excess space in acronyms.
+     * Remove excess space in acronyms.
      * 
      * @param tt {@link TokenizedText}
      */
-    public static void fixExcessSpace(TokenizedText tt) {
+    public static void removeExcessSpace(TokenizedText tt) {
         List<Token> tokens = tt.getTokens();
         Set<Integer> removeIndexSet = new HashSet<Integer>();
 
-        Token current;
+        Token currentToken;
         boolean foundSingleLetter = false, foundPeriod = false;
         for (int i = 0; i < tokens.size(); ++i) {
-            current = tokens.get(i);
-            if (current.containsProperty(TokenProperty.WORD)) {
-                if (current.toString().length() == 1) {
+            currentToken = tokens.get(i);
+            if (currentToken.containsProperty(TokenProperty.WORD)) {
+                if (currentToken.length() == 1) {
                     foundSingleLetter = true;
                 } else if (removeIndexSet.contains(i - 1)) {
                     removeIndexSet.remove(i - 1);
                 }
             } else if (foundSingleLetter) {
-                if (current.equals(TokenConstants.PERIOD)) {
+                if (currentToken.equals(TokenConstants.PERIOD)) {
                     foundPeriod = true;
                 }
                 foundSingleLetter = false;
             } else if (foundPeriod) {
-                if (current.equals(TokenConstants.SPACE)) {
+                if (currentToken.equals(TokenConstants.SPACE)) {
                     removeIndexSet.add(i);
                 }
                 foundPeriod = false;

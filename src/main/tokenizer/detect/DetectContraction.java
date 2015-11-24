@@ -38,8 +38,13 @@ public class DetectContraction {
                         removeIndexSet.add(i);
                         TokenProperties properties = TokenProperties.mergeTokenProperties(prevPrevToken, currentToken);
                         properties.addProperty(TokenProperty.CONTRACTION);
-                        tokens.set(i - 2, new Token(
-                                prevPrevToken.toString() + prevToken.toString() + currentToken.toString(), properties));
+
+                        StringBuilder builder = new StringBuilder();
+                        builder.append(prevPrevToken);
+                        builder.append(prevToken);
+                        builder.append(currentToken);
+
+                        tokens.set(i - 2, new Token(builder.toString(), properties));
                     }
                 }
             }

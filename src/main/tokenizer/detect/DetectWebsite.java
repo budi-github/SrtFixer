@@ -63,16 +63,20 @@ public class DetectWebsite {
                         properties = TokenProperties.mergeTokenProperties(properties, currentToken);
                         properties.addProperty(TokenProperty.WEBSITE);
 
+                        StringBuilder builder = new StringBuilder();
+                        int setIndex = i - 2;
+
                         if (foundWWW) {
-                            tokens.set(i - 4,
-                                    new Token(prevPrevPrevPrevToken.toString() + prevPrevPrevToken.toString()
-                                            + prevPrevToken.toString() + prevToken.toString() + currentToken.toString(),
-                                    properties));
-                        } else {
-                            tokens.set(i - 2,
-                                    new Token(prevPrevToken.toString() + prevToken.toString() + currentToken.toString(),
-                                            properties));
+                            setIndex = i - 4;
+                            builder.append(prevPrevPrevPrevToken);
+                            builder.append(prevPrevPrevToken);
                         }
+
+                        builder.append(prevPrevToken);
+                        builder.append(prevToken);
+                        builder.append(currentToken);
+
+                        tokens.set(setIndex, new Token(builder.toString(), properties));
                     }
                 }
             }
