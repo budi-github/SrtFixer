@@ -89,6 +89,45 @@ public class TokenProperties {
     }
 
     /**
+     * Merge two token properties together.
+     * 
+     * @param t1 Token properties 1. This is the token's properties that will be
+     *            at the beginning of the new token.
+     * @param t2 Token 2. This is the token's properties that will be appended
+     *            to the first token.
+     * @return merged properties
+     */
+    public static TokenProperties mergeTokenProperties(TokenProperties t1, Token t2) {
+        return mergeTokenProperties(t1, t2.getTokenProperties());
+    }
+
+    /**
+     * Merge two token properties together.
+     * 
+     * @param t1 Token 1. This is the token's properties that will be at the
+     *            beginning of the new token.
+     * @param t2 Token properties 2. This is the token's properties that will be
+     *            appended to the first token.
+     * @return merged properties
+     */
+    public static TokenProperties mergeTokenProperties(Token t1, TokenProperties t2) {
+        return mergeTokenProperties(t1.getTokenProperties(), t2);
+    }
+
+    /**
+     * Merge two token properties together.
+     * 
+     * @param t1 Token 1. This is the token's properties that will be at the
+     *            beginning of the new token.
+     * @param t2 Token 2. This is the token's properties that will be appended
+     *            to the first token.
+     * @return merged properties
+     */
+    public static TokenProperties mergeTokenProperties(Token t1, Token t2) {
+        return mergeTokenProperties(t1.getTokenProperties(), t2.getTokenProperties());
+    }
+
+    /**
      * Add {@link TokenProperty} to {@link #properties}.
      * 
      * @param property property to add
@@ -114,7 +153,7 @@ public class TokenProperties {
     public void removeProperty(TokenProperty property) {
         properties.remove(property);
     }
-    
+
     /**
      * Remove properties.
      * 

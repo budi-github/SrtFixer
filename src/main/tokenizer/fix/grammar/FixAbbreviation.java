@@ -36,7 +36,7 @@ public class FixAbbreviation {
      */
     public static void fix(TokenizedText tt) {
         List<Token> tokens = tt.getTokens();
-        
+
         Token current;
         for (int i = 0; i < tokens.size(); ++i) {
             current = tokens.get(i);

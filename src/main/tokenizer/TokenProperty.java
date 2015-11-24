@@ -16,7 +16,7 @@ public enum TokenProperty {
      * Lowercase letters.
      */
     LOWER,
-    
+
     /**
      * Uppercase letters.
      */
@@ -26,7 +26,7 @@ public enum TokenProperty {
      * Digit.
      */
     DIGIT,
-    
+
     /**
      * Number.
      */
@@ -51,15 +51,20 @@ public enum TokenProperty {
      * Acronym.
      */
     ACRONYM,
-    
+
     /**
      * Contraction.
      */
     CONTRACTION,
-    
+
     /**
      * Time.
      */
     TIME,
+
+    /**
+     * Website.
+     */
+    WEBSITE,
 
 }

@@ -36,10 +36,8 @@ public class DetectTime {
                     if (currentToken.containsProperty(TokenProperty.NUMBER)) {
                         removeIndexSet.add(i - 1);
                         removeIndexSet.add(i);
-                        TokenProperties properties = TokenProperties.mergeTokenProperties(
-                                prevPrevToken.getTokenProperties(), prevToken.getTokenProperties());
-                        properties =
-                                TokenProperties.mergeTokenProperties(properties, currentToken.getTokenProperties());
+                        TokenProperties properties = TokenProperties.mergeTokenProperties(prevPrevToken, prevToken);
+                        properties = TokenProperties.mergeTokenProperties(properties, currentToken);
                         properties.addProperty(TokenProperty.TIME);
                         properties.addProperty(TokenProperty.WORD); // TODO: does it need this?
                         tokens.set(i - 2, new Token(

@@ -132,11 +132,11 @@ public class FixCapitalization {
         for (Token token : tokens) {
             if (token.isAll(TokenProperty.UPPER)) {
                 if (token.length() > 1 && !ALL_UPPERCASE.contains(token.toString())) {
-                    token.toLowerCase();
+                    token.modifyToLowerCase();
                 }
             } else {
                 if (ALL_UPPERCASE.contains(token.toString())) {
-                    token.toUpperCase();
+                    token.modifyToUpperCase();
                 }
             }
         }

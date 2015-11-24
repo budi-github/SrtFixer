@@ -31,7 +31,7 @@ public class FixDash {
      */
     public static void fixBeginningDash(TokenizedText tt) {
         List<Token> tokens = tt.getTokens();
-        
+
         if (tokens.size() >= 2) {
             Token first = tokens.get(0);
             Token second = tokens.get(1);

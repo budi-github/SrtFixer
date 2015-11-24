@@ -109,20 +109,20 @@ public class Token {
             addProperty(TokenProperty.UPPER);
         }
     }
-    
+
     /**
      * Make token all lowercase.
      */
-    public void toLowerCase() {
+    public void modifyToLowerCase() {
         for (int i = 0; i < tokenStringBuilder.length(); ++i) {
             tokenStringBuilder.setCharAt(i, Character.toLowerCase(tokenStringBuilder.charAt(i)));
         }
-        
+
         if (!containsProperty(TokenProperty.ACRONYM)) {
             setAll(TokenProperty.LOWER);
         }
         setStartsWith(TokenProperty.LOWER);
-        
+
         addProperty(TokenProperty.LOWER);
         removeProperty(TokenProperty.UPPER);
     }
@@ -130,16 +130,16 @@ public class Token {
     /**
      * Make token all uppercase.
      */
-    public void toUpperCase() {
+    public void modifyToUpperCase() {
         for (int i = 0; i < tokenStringBuilder.length(); ++i) {
             tokenStringBuilder.setCharAt(i, Character.toUpperCase(tokenStringBuilder.charAt(i)));
         }
-        
+
         if (!containsProperty(TokenProperty.ACRONYM)) {
             setAll(TokenProperty.UPPER);
         }
         setStartsWith(TokenProperty.UPPER);
-        
+
         addProperty(TokenProperty.UPPER);
         removeProperty(TokenProperty.LOWER);
     }
@@ -234,7 +234,7 @@ public class Token {
     public boolean startsWith(TokenProperty property) {
         return tokenProperties.startsWith(property);
     }
-    
+
     /**
      * Get length of token.
      * 

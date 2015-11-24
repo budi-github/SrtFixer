@@ -16,7 +16,7 @@ import main.tokenizer.TokenizedText;
  * @author budi
  */
 public class DetectAcronym {
-    
+
     /**
      * Detect acronym.
      * 
@@ -45,18 +45,15 @@ public class DetectAcronym {
 
         for (int i = 0; i < tokens.size() && !potentialAcronymIndices.isEmpty(); ++i) {
             if (potentialAcronymIndices.contains(i) && potentialAcronymIndices.contains(i + 1)) {
-                TokenProperties properties = TokenProperties.mergeTokenProperties(tokens.get(i).getTokenProperties(),
-                        tokens.get(i + 1).getTokenProperties());
+                TokenProperties properties = TokenProperties.mergeTokenProperties(tokens.get(i), tokens.get(i + 1));
                 potentialAcronymIndices.remove(i);
                 potentialAcronymIndices.remove(i + 1);
                 int index = i + 1;
 
                 while (true) {
                     if (potentialAcronymIndices.contains(index + 1) && potentialAcronymIndices.contains(index + 2)) {
-                        properties = TokenProperties.mergeTokenProperties(properties,
-                                tokens.get(index + 1).getTokenProperties());
-                        properties = TokenProperties.mergeTokenProperties(properties,
-                                tokens.get(index + 2).getTokenProperties());
+                        properties = TokenProperties.mergeTokenProperties(properties, tokens.get(index + 1));
+                        properties = TokenProperties.mergeTokenProperties(properties, tokens.get(index + 2));
                         properties.addProperty(TokenProperty.ACRONYM);
 
                         potentialAcronymIndices.remove(index + 1);

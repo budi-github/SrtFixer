@@ -76,9 +76,9 @@ public class FixAcronym {
         for (Token token : tokens) {
             if (token.containsProperty(TokenProperty.ACRONYM)) {
                 if (LOWERCASE_ACRONYMS.contains(token.toString())) {
-                    token.toLowerCase();
+                    token.modifyToLowerCase();
                 } else {
-                    token.toUpperCase();
+                    token.modifyToUpperCase();
                 }
             }
         }
