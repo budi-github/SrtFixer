@@ -72,6 +72,14 @@ public class TokenProperties {
      * @return merged properties
      */
     public static TokenProperties mergeTokenProperties(TokenProperties t1, TokenProperties t2) {
+        if (t1 == null && t2 == null) {
+            return null;
+        } else if (t1 == null) {
+            return t2;
+        } else if (t2 == null) {
+            return t1;
+        }
+
         Set<TokenProperty> properties = new HashSet<TokenProperty>();
 
         properties.addAll(t1.getProperties());
