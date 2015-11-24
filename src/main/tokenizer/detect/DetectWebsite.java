@@ -3,13 +3,13 @@ package main.tokenizer.detect;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperties;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenizedText;
-import main.tokenizer.fix.grammar.FixWebsite;
 
 /**
  * Detect website.
@@ -17,6 +17,18 @@ import main.tokenizer.fix.grammar.FixWebsite;
  * @author budi
  */
 public class DetectWebsite {
+
+    /**
+     * Set of valid url extensions.
+     */
+    public static final Set<String> VALID_EXTENSIONS;
+
+    static {
+        VALID_EXTENSIONS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+        VALID_EXTENSIONS.add("com");
+        VALID_EXTENSIONS.add("net");
+        VALID_EXTENSIONS.add("org");
+    }
 
     /**
      * Detect website.
@@ -39,7 +51,7 @@ public class DetectWebsite {
 
             if (prevPrevToken != null && prevPrevToken.containsProperty(TokenProperty.WORD)) {
                 if (prevToken.equals(TokenConstants.PERIOD)) {
-                    if (FixWebsite.VALID_EXTENSIONS.contains(currentToken.toString())) {
+                    if (VALID_EXTENSIONS.contains(currentToken.toString())) {
                         if (prevPrevPrevPrevToken != null && prevPrevPrevPrevToken.containsProperty(TokenProperty.WORD)
                                 && prevPrevPrevPrevToken.toString().equals("www")) {
                             if (prevPrevPrevToken.equals(TokenConstants.PERIOD)) {
@@ -56,10 +68,8 @@ public class DetectWebsite {
 
                         TokenProperties properties = null;
                         if (foundWWW) {
-                            properties = TokenProperties.mergeTokenProperties(prevPrevPrevPrevToken, prevPrevPrevToken);
+                            properties = TokenProperties.mergeTokenProperties(prevPrevPrevPrevToken, prevPrevToken);
                         }
-                        properties = TokenProperties.mergeTokenProperties(properties, prevPrevToken);
-                        properties = TokenProperties.mergeTokenProperties(properties, prevToken);
                         properties = TokenProperties.mergeTokenProperties(properties, currentToken);
                         properties.addProperty(TokenProperty.WEBSITE);
 

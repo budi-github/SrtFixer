@@ -130,8 +130,9 @@ public class FixCapitalization {
         List<Token> tokens = tt.getTokens();
 
         for (Token token : tokens) {
-            if (token.isAll(TokenProperty.UPPER)) {
-                if (token.length() > 1 && !ALL_UPPERCASE.contains(token.toString())) {
+            if (token.isAll(TokenProperty.UPPER) && !token.containsProperty(TokenProperty.ACRONYM)) {
+                if (token.length() > 1 && !ALL_UPPERCASE.contains(token.toString())
+                        && !POTENTIAL_ALL_UPPERCASE.contains(token.toString())) {
                     token.modifyToLowerCase();
                 }
             } else {

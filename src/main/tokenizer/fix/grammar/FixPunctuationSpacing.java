@@ -27,6 +27,8 @@ public class FixPunctuationSpacing {
         DO_NOT_REMOVE_SPACE.add(TokenConstants.AT_SIGN);
         DO_NOT_REMOVE_SPACE.add(TokenConstants.DOLLAR_SIGN);
         DO_NOT_REMOVE_SPACE.add(TokenConstants.POUND);
+        DO_NOT_REMOVE_SPACE.add(TokenConstants.SINGLE_QUOTE);
+        DO_NOT_REMOVE_SPACE.add(TokenConstants.DOUBLE_QUOTE);
     }
 
     /**

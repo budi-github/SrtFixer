@@ -48,6 +48,11 @@ public enum TokenProperty {
     W_SPACE,
 
     /**
+     * Abbreviation.
+     */
+    ABBREVIATION,
+
+    /**
      * Acronym.
      */
     ACRONYM,

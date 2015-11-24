@@ -3,11 +3,11 @@ package main.tokenizer.fix.grammar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenizedText;
+import main.tokenizer.detect.DetectWebsite;
 
 /**
  * Fix website.
@@ -15,18 +15,6 @@ import main.tokenizer.TokenizedText;
  * @author budi
  */
 public class FixWebsite {
-
-    /**
-     * Set of valid url extensions.
-     */
-    public static final Set<String> VALID_EXTENSIONS;
-
-    static {
-        VALID_EXTENSIONS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
-        VALID_EXTENSIONS.add("com");
-        VALID_EXTENSIONS.add("net");
-        VALID_EXTENSIONS.add("org");
-    }
 
     /**
      * Remove excess space in websites.
@@ -51,7 +39,7 @@ public class FixWebsite {
                     }
                 } else if (prevPrevToken.equals(TokenConstants.PERIOD)) {
                     if (prevToken.equals(TokenConstants.SPACE)) {
-                        if (VALID_EXTENSIONS.contains(currentToken.toString())) {
+                        if (DetectWebsite.VALID_EXTENSIONS.contains(currentToken.toString())) {
                             removeIndexSet.add(i - 1);
                         }
                     }

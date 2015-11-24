@@ -136,6 +136,16 @@ public class TokenProperties {
     }
 
     /**
+     * Copy token properties.
+     * 
+     * @param token token to copy
+     * @return copied token properties
+     */
+    public static TokenProperties copyTokenProperties(Token token) {
+        return mergeTokenProperties(token.getTokenProperties(), new Token());
+    }
+
+    /**
      * Add {@link TokenProperty} to {@link #properties}.
      * 
      * @param property property to add

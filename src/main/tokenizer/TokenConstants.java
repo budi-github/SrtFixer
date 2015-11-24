@@ -88,6 +88,16 @@ public class TokenConstants {
     public static final Token SLASH = new Token("/", TokenProperty.PUNCT);
 
     /**
+     * Less than.
+     */
+    public static final Token LESS_THAN = new Token("<", TokenProperty.PUNCT);
+
+    /**
+     * Greater than.
+     */
+    public static final Token GREATER_THAN = new Token(">", TokenProperty.PUNCT);
+
+    /**
      * Space.
      */
     public static final Token SPACE = new Token(" ", TokenProperty.W_SPACE);

@@ -22,7 +22,7 @@ public class TokenFactory {
         case '\n':
             return TokenConstants.NEWLINE;
         default:
-            // TODO: generate warning message
+            System.out.println(String.format("Warning! Unidentified whitespace found: '%c'", c));
             return new Token(String.valueOf(c), TokenProperty.W_SPACE);
         }
     }
@@ -66,8 +66,12 @@ public class TokenFactory {
             return TokenConstants.AMPERSAND;
         case '/':
             return TokenConstants.SLASH;
+        case '<':
+            return TokenConstants.LESS_THAN;
+        case '>':
+            return TokenConstants.GREATER_THAN;
         default:
-            // TODO: generate warning message
+            System.out.println(String.format("Warning! Unidentified punctuation found: '%c'", c));
             return new Token(String.valueOf(c), TokenProperty.PUNCT);
         }
     }

@@ -135,9 +135,7 @@ public class Token {
             tokenStringBuilder.setCharAt(i, Character.toUpperCase(tokenStringBuilder.charAt(i)));
         }
 
-        if (!containsProperty(TokenProperty.ACRONYM)) {
-            setAll(TokenProperty.UPPER);
-        }
+        setAll(TokenProperty.UPPER);
         setStartsWith(TokenProperty.UPPER);
 
         addProperty(TokenProperty.UPPER);

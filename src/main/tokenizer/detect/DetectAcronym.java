@@ -3,6 +3,7 @@ package main.tokenizer.detect;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
@@ -16,6 +17,16 @@ import main.tokenizer.TokenizedText;
  * @author budi
  */
 public class DetectAcronym {
+
+    /**
+     * Set of acronyms that should be all lowercase.
+     */
+    public static final Set<String> LOWERCASE_ACRONYMS;
+
+    static {
+        LOWERCASE_ACRONYMS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+        LOWERCASE_ACRONYMS.add("i.e.");
+    }
 
     /**
      * Detect acronym.
@@ -45,7 +56,7 @@ public class DetectAcronym {
 
         for (int i = 0; i < tokens.size() && !potentialAcronymIndices.isEmpty(); ++i) {
             if (potentialAcronymIndices.contains(i) && potentialAcronymIndices.contains(i + 1)) {
-                TokenProperties properties = TokenProperties.mergeTokenProperties(tokens.get(i), tokens.get(i + 1));
+                TokenProperties properties = TokenProperties.copyTokenProperties(tokens.get(i));
                 potentialAcronymIndices.remove(i);
                 potentialAcronymIndices.remove(i + 1);
                 int index = i + 1;
@@ -53,7 +64,6 @@ public class DetectAcronym {
                 while (true) {
                     if (potentialAcronymIndices.contains(index + 1) && potentialAcronymIndices.contains(index + 2)) {
                         properties = TokenProperties.mergeTokenProperties(properties, tokens.get(index + 1));
-                        properties = TokenProperties.mergeTokenProperties(properties, tokens.get(index + 2));
                         properties.addProperty(TokenProperty.ACRONYM);
 
                         potentialAcronymIndices.remove(index + 1);
