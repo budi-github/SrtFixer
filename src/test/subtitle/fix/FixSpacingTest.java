@@ -35,7 +35,7 @@ public class FixSpacingTest extends BaseSubtitleTest {
 
         collection.add("He ...", "He...");
         collection.add("Hello ... hello", "Hello... hello");
-        collection.add("Hello ...World", "Hello... World");
+        collection.add("Hello ...world", "Hello... world");
         collection.add("What... is ...life?", "What... is... life?");
 
         collection.add(" 'Hello World '", "'Hello World'");

@@ -22,12 +22,12 @@ public class FixThreeLinesTest extends BaseSubtitleTest {
         ParameterizedCollection collection = new ParameterizedCollection(FixThreeLinesTest.class);
 
         collection.add("And make it\nthe greatest day\nof your life!", "And make it the greatest day of your life!");
-        collection.add("Do you...\nDo you think\nwe could be...", "Do you... Do you think we could be...");
+        collection.add("Do you...\ndo you think\nwe could be...", "Do you... do you think we could be...");
         collection.add("Ron, aren't you\ngoing to say\nsomething to him?",
                 "Ron, aren't you going to say something to him?");
 
-        collection.add("Look, it's not that\nyou're not attractive...\nMmm-hmm?",
-                "Look, it's not that you're not attractive... Mmm-hmm?");
+        collection.add("Look, it's not that\nyou're not attractive...\nmmm-hmm?",
+                "Look, it's not that you're not attractive... mmm-hmm?");
 
         collection.add("San Diago. Looks like\nwe begin our search\nright here at home.",
                 "San Diago.\nLooks like we begin our search right here at home.");

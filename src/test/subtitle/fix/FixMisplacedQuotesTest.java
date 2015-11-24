@@ -58,7 +58,7 @@ public class FixMisplacedQuotesTest extends BaseSubtitleTest {
         collection.add("You're not just sayin' it 'cause", "You're not just sayin' it 'cause");
         collection.add("'Cause I'm not.", "'Cause I'm not.");
 
-        collection.add("I'm just playin'\nNot really.", "I'm just playin'\nNot really.");
+        collection.add("I'm just playin'.\nNot really.", "I'm just playin'.\nNot really.");
 
         collection.add("officers' mess,");
         collection.add("Edmunds' planet.");

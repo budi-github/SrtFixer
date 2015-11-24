@@ -132,7 +132,7 @@ public class PunctuationTest extends BaseTest {
     @Test
     public void testMultipleExclamationPoints() {
         String p = "!!!";
-        assertEquals(StringUtil.append(expected, p), fix(StringUtil.append(actual, p)));
+        assertEquals(StringUtil.append(expected, "!"), fix(StringUtil.append(actual, p)));
     }
 
     /**
@@ -143,7 +143,7 @@ public class PunctuationTest extends BaseTest {
     @Test
     public void testMultipleQuestionMarks() {
         String p = "???";
-        assertEquals(StringUtil.append(expected, p), fix(StringUtil.append(actual, p)));
+        assertEquals(StringUtil.append(expected, "?"), fix(StringUtil.append(actual, p)));
     }
 
     @Override

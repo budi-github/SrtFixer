@@ -24,7 +24,7 @@ public class FixAbbreviationsTest extends BaseSubtitleTest {
         collection.add("dr Mann", "Dr. Mann");
         collection.add("The dr. Mann", "The Dr. Mann");
         collection.add("Mr Smith", "Mr. Smith");
-        collection.add("mrs smith", "Mrs. smith");
+        collection.add("mrs Smith", "Mrs. Smith");
         collection.add("mrs", "Mrs.");
         collection.add("ms.", "Ms.");
 

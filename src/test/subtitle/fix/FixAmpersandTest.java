@@ -22,14 +22,16 @@ public class FixAmpersandTest extends BaseSubtitleTest {
         ParameterizedCollection collection = new ParameterizedCollection(FixAmpersandTest.class);
 
         collection.add("Q&A");
-        collection.add("Q& A", "Q&A");
-        collection.add("Q &A", "Q&A");
-        collection.add("Q & A", "Q&A");
+        collection.add("Q & A");
+        collection.add("Q& A", "Q & A");
+        collection.add("Q &A", "Q & A");
 
-        collection.add("M & M", "M&M");
-        collection.add("M & M's", "M&M's");
+        collection.add("M&M");
+        collection.add("M & M");
+        collection.add("M&M's");
+        collection.add("M & M's");
 
-        collection.add("I like M & M's", "I like M&M's");
+        collection.add("I like M & M's");
 
         collection.add("Law & Order");
 

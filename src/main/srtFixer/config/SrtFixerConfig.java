@@ -26,7 +26,7 @@ public class SrtFixerConfig {
      * <p>
      * Currently experimental. Use at your own risk!
      */
-    private static final boolean TOGGLE_CORRECT_CAPITALIZATION = true;
+    private static final boolean TOGGLE_CORRECT_CAPITALIZATION = false;
 
     /**
      * @return {@link #MAX_LINE_LENGTH}

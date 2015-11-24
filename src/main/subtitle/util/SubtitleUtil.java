@@ -99,26 +99,35 @@ public class SubtitleUtil {
 
         char delimiter = regex.replace("\\", "").charAt(0);
 
-        String[] splitArray = line.split(regex);
-        if (splitArray.length == 2) {
-            builder = new StringBuilder();
-            builder.append(splitArray[0].trim());
-            builder.append(delimiter);
-            builder.append('\n');
-            builder.append(splitArray[1].trim());
-            if (line.endsWith(String.valueOf(delimiter))) {
+        String[] split = line.split(regex);
+        String first, second, third;
+        if (split.length == 2) {
+            first = split[0];
+            second = split[1];
+            if (!Character.isDigit(first.charAt(first.length() - 1))
+                    && !Character.isDigit(second.charAt(second.length() - 1))) {
+                builder = new StringBuilder();
+                builder.append(first.trim());
                 builder.append(delimiter);
+                builder.append('\n');
+                builder.append(second.trim());
+                if (line.endsWith(String.valueOf(delimiter))) {
+                    builder.append(delimiter);
+                }
+                list.add(builder);
             }
-            list.add(builder);
-        } else if (splitArray.length == 3) {
+        } else if (split.length == 3) {
+            first = split[0];
+            second = split[1];
+            third = split[2];
             builder = new StringBuilder();
-            builder.append(splitArray[0].trim());
+            builder.append(first.trim());
             builder.append(delimiter);
             builder.append(' ');
-            builder.append(splitArray[1].trim());
+            builder.append(second.trim());
             builder.append(delimiter);
             builder.append('\n');
-            builder.append(splitArray[2].trim());
+            builder.append(third.trim());
 
             if (line.endsWith(String.valueOf(delimiter))) {
                 builder.append(delimiter);
@@ -126,18 +135,18 @@ public class SubtitleUtil {
             list.add(builder);
 
             builder = new StringBuilder();
-            builder.append(splitArray[0].trim());
+            builder.append(split[0].trim());
             builder.append(delimiter);
             builder.append('\n');
-            builder.append(splitArray[1].trim());
+            builder.append(split[1].trim());
             builder.append(delimiter);
             builder.append(' ');
-            builder.append(splitArray[2].trim());
+            builder.append(split[2].trim());
             if (line.endsWith(String.valueOf(delimiter))) {
                 builder.append(delimiter);
             }
             list.add(builder);
-        } else if (splitArray.length > 3) {
+        } else if (split.length > 3) {
             list.add(splitClosestToMiddle(line, delimiter));
         }
 
@@ -152,6 +161,8 @@ public class SubtitleUtil {
      * @return True if strings are approximately equal, otherwise false.
      */
     public static boolean isApproximatelyEqual(String result, String text) {
+        // TODO: this is confusing
+
         boolean dotSpace = false, spaceDot = false;
         if (result.length() == text.length()) {
             result = result.replace("\n", " ");
@@ -160,7 +171,9 @@ public class SubtitleUtil {
             for (int i = 0; i < result.length(); ++i) {
                 r = result.charAt(i);
                 t = text.charAt(i);
-                if (r != t) {
+                if ((r == ' ' && t == '\n') || (r == '\n' && t == ' ')) {
+                    // pass
+                } else if (r != t) {
                     if (dotSpace) {
                         if (r == ' ' && t == '.') {
                             dotSpace = false;

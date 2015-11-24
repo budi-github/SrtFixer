@@ -19,7 +19,7 @@ public class FixAcronymTest extends BaseSubtitleTest {
      * @return test collection
      */
     public static Collection<Object[]> testCollection() {
-        ParameterizedCollection collection = new ParameterizedCollection(FixAbbreviationsTest.class);
+        ParameterizedCollection collection = new ParameterizedCollection(FixAcronymTest.class);
 
         collection.add(" A .M .", "A.M.");
         collection.add("P.M .", "P.M.");
