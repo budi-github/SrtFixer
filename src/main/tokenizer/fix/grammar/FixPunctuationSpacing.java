@@ -35,6 +35,17 @@ public class FixPunctuationSpacing {
      * @param tt {@link TokenizedText}
      */
     public static void fix(TokenizedText tt) {
+        removeExcessSpace(tt);
+        removeExcessSpaceBeginningEllipses(tt);
+        //addMissingSpace(tt);
+    }
+
+    /**
+     * Remove excess space.
+     * 
+     * @param tt {@link TokenizedText}
+     */
+    public static void removeExcessSpace(TokenizedText tt) {
         List<Token> tokens = tt.getTokens();
         Set<Integer> removeIndexSet = new HashSet<Integer>();
 
@@ -50,6 +61,60 @@ public class FixPunctuationSpacing {
         }
 
         tt.removeIndices(removeIndexSet);
+    }
+
+    /**
+     * Remove excess space in cases where there is an ellipses, a space,
+     * followed by the first word in a sentence.
+     * 
+     * @param tt {@link TokenizedText}
+     */
+    public static void removeExcessSpaceBeginningEllipses(TokenizedText tt) {
+        List<Token> tokens = tt.getTokens();
+        Set<Integer> removeIndexSet = new HashSet<Integer>();
+
+        Token prevPrevToken, prevToken = null, currentToken = null;
+        for (int i = 0; i < tokens.size(); ++i) {
+            prevPrevToken = prevToken;
+            prevToken = currentToken;
+            currentToken = tokens.get(i);
+            if (currentToken.containsProperty(TokenProperty.WORD)) {
+                if (prevToken != null && prevToken.equals(TokenConstants.SPACE)) {
+                    if (prevPrevToken != null && prevPrevToken.equals(TokenConstants.ELLIPSES)) {
+                        removeIndexSet.add(i - 1);
+                    }
+                }
+                break;
+            }
+        }
+
+        tt.removeIndices(removeIndexSet);
+    }
+
+    /**
+     * Add missing space.
+     * 
+     * @param tt {@link TokenizedText}
+     */
+    public static void addMissingSpace(TokenizedText tt) {
+        List<Token> tokens = tt.getTokens();
+
+        Token prevToken, currentToken = null;
+        for (int i = 0; i < tokens.size(); ++i) {
+            prevToken = currentToken;
+            currentToken = tokens.get(i);
+            if (DO_NOT_REMOVE_SPACE.contains(currentToken)) {
+                if (prevToken != null && !prevToken.equals(TokenConstants.SPACE)) {
+                    if (i + 1 < tokens.size()) {
+                        Token nextToken = tokens.get(i + 1);
+                        if (nextToken.equals(TokenConstants.SPACE)) {
+                            tokens.add(i, TokenConstants.SPACE);
+                            currentToken = TokenConstants.SPACE;
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

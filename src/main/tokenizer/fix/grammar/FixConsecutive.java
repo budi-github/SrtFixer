@@ -30,6 +30,7 @@ public class FixConsecutive {
         fixConsecutiveProperties(tt, TokenConstants.SPACE, TokenConstants.SPACE);
         fixConsecutiveProperties(tt, TokenConstants.SINGLE_QUOTE, TokenConstants.DOUBLE_QUOTE);
         fixConsecutiveProperties(tt, TokenConstants.DOUBLE_QUOTE, TokenConstants.DOUBLE_QUOTE);
+        fixConsecutiveProperties(tt, TokenConstants.DASH, TokenConstants.DASH); // TODO: "--" is also correct
     }
 
     /**

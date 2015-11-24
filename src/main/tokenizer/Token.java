@@ -234,6 +234,15 @@ public class Token {
     public boolean startsWith(TokenProperty property) {
         return tokenProperties.startsWith(property);
     }
+    
+    /**
+     * Get length of token.
+     * 
+     * @return length of token
+     */
+    public int length() {
+        return tokenStringBuilder.length();
+    }
 
     /**
      * Clear token.
@@ -244,15 +253,6 @@ public class Token {
     }
 
     /**
-     * Get token string.
-     * 
-     * @return string of {@link #tokenStringBuilder}
-     */
-    public String getTokenString() {
-        return tokenStringBuilder.toString();
-    }
-
-    /**
      * Debug string.
      * 
      * @return debug string
@@ -260,7 +260,7 @@ public class Token {
     public String debugString() {
         StringBuilder builder = new StringBuilder();
         builder.append('(');
-        builder.append(getTokenString());
+        builder.append(toString());
         builder.append(')');
 
         builder.append('\t');
@@ -272,7 +272,7 @@ public class Token {
 
     @Override
     public String toString() {
-        return getTokenString();
+        return tokenStringBuilder.toString();
     }
 
     /**

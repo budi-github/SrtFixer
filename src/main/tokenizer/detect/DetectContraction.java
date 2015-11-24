@@ -36,12 +36,11 @@ public class DetectContraction {
                     if (currentToken.containsProperty(TokenProperty.WORD)) {
                         removeIndexSet.add(i - 1);
                         removeIndexSet.add(i);
-                        TokenProperties properties = TokenProperties.mergeTokenProperties(prevPrevToken.getTokenProperties(),
-                                currentToken.getTokenProperties());
+                        TokenProperties properties = TokenProperties.mergeTokenProperties(
+                                prevPrevToken.getTokenProperties(), currentToken.getTokenProperties());
                         properties.addProperty(TokenProperty.CONTRACTION);
-                        tokens.set(i - 2,
-                                new Token(prevPrevToken.getTokenString() + prevToken.getTokenString() + currentToken.getTokenString(),
-                                        properties));
+                        tokens.set(i - 2, new Token(
+                                prevPrevToken.toString() + prevToken.toString() + currentToken.toString(), properties));
                     }
                 }
             }

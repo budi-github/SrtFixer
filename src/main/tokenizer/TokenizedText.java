@@ -45,8 +45,6 @@ public class TokenizedText {
             if (Character.isLowerCase(c)) {
                 if (token.getStartsWith() == null) {
                     token.setStartsWith(TokenProperty.LOWER);
-                }
-                if (token.getAll() == null) {
                     token.setAll(TokenProperty.LOWER);
                 } else {
                     if (token.getStartsWith() != null && !token.isAll(TokenProperty.LOWER)) {
@@ -58,8 +56,6 @@ public class TokenizedText {
             } else if (Character.isUpperCase(c)) {
                 if (token.getStartsWith() == null) {
                     token.setStartsWith(TokenProperty.UPPER);
-                }
-                if (token.getAll() == null) {
                     token.setAll(TokenProperty.UPPER);
                 } else {
                     if (token.getStartsWith() != null && !token.isAll(TokenProperty.UPPER)) {
@@ -71,8 +67,6 @@ public class TokenizedText {
             } else if (Character.isDigit(c)) {
                 if (token.getStartsWith() == null) {
                     token.setStartsWith(TokenProperty.DIGIT);
-                }
-                if (token.getAll() == null) {
                     token.setAll(TokenProperty.DIGIT);
                 } else {
                     if (token.getStartsWith() != null && !token.isAll(TokenProperty.DIGIT)) {

@@ -31,7 +31,10 @@ public class RemoveHearingImpaired {
             currentToken = tokens.get(i);
             if (currentToken.equals(TokenConstants.DASH)) {
                 foundDash = true;
-            } else if (currentToken.isAll(TokenProperty.UPPER) || currentToken.isAll(TokenProperty.DIGIT)) {
+            } else if (currentToken.isAll(TokenProperty.UPPER) || currentToken.isAll(TokenProperty.DIGIT)
+                    || (currentToken.containsProperty(TokenProperty.ALPHANUMERIC)
+                            && currentToken.containsProperty(TokenProperty.UPPER)
+                            && !currentToken.containsProperty(TokenProperty.LOWER))) {
                 removeIndexSet.add(i);
             } else if (currentToken.equals(TokenConstants.SPACE)) {
                 if (foundDash) {
