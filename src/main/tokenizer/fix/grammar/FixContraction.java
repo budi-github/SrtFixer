@@ -7,6 +7,7 @@ import java.util.Set;
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperty;
+import main.tokenizer.TokenUtil;
 import main.tokenizer.TokenizedText;
 import main.tokenizer.detect.DetectContraction;
 
@@ -48,15 +49,7 @@ public class FixContraction {
             if (prevPrevToken != null && prevPrevToken.containsProperty(TokenProperty.WORD)) {
                 if (prevToken.equals(TokenConstants.SINGLE_QUOTE)) {
                     if (DetectContraction.CONTRACTIONS_ENDINGS.contains(currentToken.toString())) {
-                        int remove = i - 1;
-                        Token lookBackToken;
-                        do {
-                            lookBackToken = tokens.get(remove);
-                            if (lookBackToken.equals(TokenConstants.SPACE)) {
-                                removeIndexSet.add(remove);
-                            }
-                            --remove;
-                        } while (remove >= 0 && !lookBackToken.equals(prevPrevToken));
+                        removeIndexSet.addAll(TokenUtil.lookBackAndRemove(tokens, i, TokenConstants.SPACE, prevPrevToken));
                     }
                 }
             }
