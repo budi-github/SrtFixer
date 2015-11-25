@@ -73,6 +73,15 @@ public class Token {
     }
 
     /**
+     * Append string to the end of {@link #tokenStringBuilder}.
+     * 
+     * @param s string to append
+     */
+    public void append(String s) {
+        tokenStringBuilder.append(s);
+    }
+
+    /**
      * Determine if token is empty.
      * 
      * @return True if token is empty, otherwise false.
@@ -82,9 +91,9 @@ public class Token {
     }
 
     /**
-     * Analyze and update properties.
+     * Update properties.
      */
-    public void analyzeProperties() {
+    public void updateProperties() {
         if (containsProperty(TokenProperty.LOWER) || containsProperty(TokenProperty.UPPER)) {
             if (containsProperty(TokenProperty.DIGIT)) {
                 addProperty(TokenProperty.ALPHANUMERIC);
@@ -100,7 +109,7 @@ public class Token {
      * Capitalize token.
      */
     public void capitalize() {
-        if (startsWith(TokenProperty.LOWER)) {
+        if (startsWith(TokenProperty.LOWER) && containsProperty(TokenProperty.WORD)) {
             tokenStringBuilder.setCharAt(0, Character.toUpperCase(tokenStringBuilder.charAt(0)));
             setStartsWith(TokenProperty.UPPER);
             if (isAll(TokenProperty.LOWER)) {
@@ -114,32 +123,34 @@ public class Token {
      * Make token all lowercase.
      */
     public void modifyToLowerCase() {
-        for (int i = 0; i < tokenStringBuilder.length(); ++i) {
-            tokenStringBuilder.setCharAt(i, Character.toLowerCase(tokenStringBuilder.charAt(i)));
-        }
+        if (!isAll(TokenProperty.LOWER) && containsProperty(TokenProperty.WORD)) {
+            for (int i = 0; i < tokenStringBuilder.length(); ++i) {
+                tokenStringBuilder.setCharAt(i, Character.toLowerCase(tokenStringBuilder.charAt(i)));
+            }
 
-        if (!containsProperty(TokenProperty.ACRONYM)) {
             setAll(TokenProperty.LOWER);
-        }
-        setStartsWith(TokenProperty.LOWER);
+            setStartsWith(TokenProperty.LOWER);
 
-        addProperty(TokenProperty.LOWER);
-        removeProperty(TokenProperty.UPPER);
+            addProperty(TokenProperty.LOWER);
+            removeProperty(TokenProperty.UPPER);
+        }
     }
 
     /**
      * Make token all uppercase.
      */
     public void modifyToUpperCase() {
-        for (int i = 0; i < tokenStringBuilder.length(); ++i) {
-            tokenStringBuilder.setCharAt(i, Character.toUpperCase(tokenStringBuilder.charAt(i)));
+        if (!isAll(TokenProperty.UPPER) && containsProperty(TokenProperty.WORD)) {
+            for (int i = 0; i < tokenStringBuilder.length(); ++i) {
+                tokenStringBuilder.setCharAt(i, Character.toUpperCase(tokenStringBuilder.charAt(i)));
+            }
+
+            setAll(TokenProperty.UPPER);
+            setStartsWith(TokenProperty.UPPER);
+
+            addProperty(TokenProperty.UPPER);
+            removeProperty(TokenProperty.LOWER);
         }
-
-        setAll(TokenProperty.UPPER);
-        setStartsWith(TokenProperty.UPPER);
-
-        addProperty(TokenProperty.UPPER);
-        removeProperty(TokenProperty.LOWER);
     }
 
     /**

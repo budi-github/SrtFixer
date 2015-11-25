@@ -35,6 +35,8 @@ public class FixCapitalizationTest extends BaseSubtitleTest {
         collection.add("I yelled, \"Hey you guys!\"", TestProperty.CAPITALIZE_ONLY);
         collection.add("I yelled, \"hey you guys!\"", "I yelled, \"Hey you guys!\"", TestProperty.CAPITALIZE_ONLY);
 
+        collection.add("Mr. and Mrs. Smith?", TestProperty.CAPITALIZE_ONLY);
+
         return collection.getCollection();
     }
 

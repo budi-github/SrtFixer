@@ -78,7 +78,7 @@ public class TokenizedText {
             } else {
                 // add current token to list
                 if (!token.isEmpty()) {
-                    token.analyzeProperties();
+                    token.updateProperties();
                     tokens.add(token);
                 }
 
