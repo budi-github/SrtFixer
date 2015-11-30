@@ -279,6 +279,30 @@ public class Token {
         return builder.toString();
     }
 
+    /**
+     * Equals ignore case.
+     * 
+     * @param anotherString string to compare
+     * @return True if strings are equal (case sensitive), otherwise false.
+     * 
+     * @see java.lang.String#equalsIgnoreCase
+     */
+    public boolean equalsIgnoreCase(String anotherString) {
+        return toString().equalsIgnoreCase(anotherString);
+    }
+
+    /**
+     * Ends with.
+     * 
+     * @param suffix suffix to check
+     * @return True if token ends with suffix, otherwise false.
+     * 
+     * @see java.lang.String#endsWith
+     */
+    public boolean endsWith(String suffix) {
+        return toString().endsWith(suffix);
+    }
+
     @Override
     public String toString() {
         return tokenStringBuilder.toString();

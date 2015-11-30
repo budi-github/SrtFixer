@@ -9,7 +9,7 @@ import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenUtil;
 import main.tokenizer.TokenizedText;
-import main.tokenizer.detect.DetectContraction;
+import main.tokenizer.collection.ContractionCollection;
 
 /**
  * Fix contraction.
@@ -48,7 +48,7 @@ public class FixContraction {
 
             if (prevPrevToken != null && prevPrevToken.containsProperty(TokenProperty.WORD)) {
                 if (prevToken.equals(TokenConstants.SINGLE_QUOTE)) {
-                    if (DetectContraction.CONTRACTIONS_ENDINGS.contains(currentToken.toString())) {
+                    if (ContractionCollection.CONTRACTIONS_ENDINGS.contains(currentToken.toString())) {
                         removeIndexSet
                                 .addAll(TokenUtil.lookBackAndRemove(tokens, i, TokenConstants.SPACE, prevPrevToken));
                     }
@@ -72,8 +72,8 @@ public class FixContraction {
         for (int i = 0; i < tokens.size(); ++i) {
             currentToken = tokens.get(i);
             String tokenString = currentToken.toString();
-            if (DetectContraction.CONTRACTIONS_ERROR_MAP.containsKey(tokenString)) {
-                int contractionIndex = DetectContraction.CONTRACTIONS_ERROR_MAP.get(tokenString);
+            if (ContractionCollection.CONTRACTIONS_ERROR_MAP.containsKey(tokenString)) {
+                int contractionIndex = ContractionCollection.CONTRACTIONS_ERROR_MAP.get(tokenString);
                 int index = 0;
                 char c = tokenString.charAt(0);
                 while (tokenString.length() > index + 1) {
