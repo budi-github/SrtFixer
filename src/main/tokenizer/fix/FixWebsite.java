@@ -7,7 +7,7 @@ import java.util.Set;
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenizedText;
-import main.tokenizer.detect.DetectWebsite;
+import main.tokenizer.collection.WebsiteCollection;
 
 /**
  * Fix website.
@@ -39,7 +39,7 @@ public class FixWebsite {
                     }
                 } else if (prevPrevToken.equals(TokenConstants.PERIOD)) {
                     if (prevToken.equals(TokenConstants.SPACE)) {
-                        if (DetectWebsite.VALID_EXTENSIONS.contains(currentToken.toString())) {
+                        if (WebsiteCollection.VALID_EXTENSIONS.contains(currentToken.toString())) {
                             removeIndexSet.add(i - 1);
                         }
                     }

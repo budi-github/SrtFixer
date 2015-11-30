@@ -3,7 +3,6 @@ package main.tokenizer.detect;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
@@ -17,16 +16,6 @@ import main.tokenizer.TokenizedText;
  * @author budi
  */
 public class DetectAcronym {
-
-    /**
-     * Set of acronyms that should be all lowercase.
-     */
-    public static final Set<String> LOWERCASE_ACRONYMS;
-
-    static {
-        LOWERCASE_ACRONYMS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
-        LOWERCASE_ACRONYMS.add("i.e.");
-    }
 
     /**
      * Detect acronym.

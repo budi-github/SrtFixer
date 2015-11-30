@@ -3,13 +3,13 @@ package main.tokenizer.detect;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperties;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenizedText;
+import main.tokenizer.collection.AbbreviationCollection;
 
 /**
  * Detect abbreviation.
@@ -17,19 +17,6 @@ import main.tokenizer.TokenizedText;
  * @author budi
  */
 public class DetectAbbreviation {
-
-    /**
-     * Set of all abbreviations.
-     */
-    public static final Set<String> ABBREVIATIONS;
-
-    static {
-        ABBREVIATIONS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
-        ABBREVIATIONS.add("dr");
-        ABBREVIATIONS.add("mr");
-        ABBREVIATIONS.add("mrs");
-        ABBREVIATIONS.add("ms");
-    }
 
     /**
      * Detect abbreviation.
@@ -44,7 +31,7 @@ public class DetectAbbreviation {
         for (int i = 0; i < tokens.size(); ++i) {
             prevToken = currentToken;
             currentToken = tokens.get(i);
-            if (prevToken != null && ABBREVIATIONS.contains(prevToken.toString())) {
+            if (prevToken != null && AbbreviationCollection.ABBREVIATIONS.contains(prevToken.toString())) {
                 if (currentToken.equals(TokenConstants.PERIOD)) {
                     removeIndexSet.add(i);
                     TokenProperties properties = TokenProperties.copyTokenProperties(prevToken);

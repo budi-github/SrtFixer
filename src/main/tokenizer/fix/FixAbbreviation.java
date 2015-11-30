@@ -6,7 +6,7 @@ import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenizedText;
-import main.tokenizer.detect.DetectAbbreviation;
+import main.tokenizer.collection.AbbreviationCollection;
 
 /**
  * Fix abbreviation.
@@ -27,7 +27,7 @@ public class FixAbbreviation {
         for (int i = 0; i < tokens.size(); ++i) {
             current = tokens.get(i);
             if (current.containsProperty(TokenProperty.WORD)) {
-                if (DetectAbbreviation.ABBREVIATIONS.contains(current.toString())) {
+                if (AbbreviationCollection.ABBREVIATIONS.contains(current.toString())) {
                     current.capitalize();
                     if (i + 1 < tokens.size()) {
                         Token nextToken = tokens.get(i + 1);

@@ -8,7 +8,7 @@ import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenizedText;
-import main.tokenizer.detect.DetectAcronym;
+import main.tokenizer.collection.AcronymCollection;
 
 /**
  * Fix acronym.
@@ -65,7 +65,7 @@ public class FixAcronym {
 
         for (Token token : tokens) {
             if (token.containsProperty(TokenProperty.ACRONYM)) {
-                if (DetectAcronym.LOWERCASE_ACRONYMS.contains(token.toString())) {
+                if (AcronymCollection.LOWERCASE_ACRONYMS.contains(token.toString())) {
                     token.modifyToLowerCase();
                 } else {
                     token.modifyToUpperCase();
