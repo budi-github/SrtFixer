@@ -32,10 +32,9 @@ import main.subtitle.fix.fixMultipleLines.FixUnbalancedDashes;
 import main.subtitle.fix.remove.RemoveCharacterName;
 import main.subtitle.fix.remove.RemoveEmpty;
 import main.subtitle.fix.remove.RemoveEndingCharacter;
-import main.subtitle.util.SubtitleUtil;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 
 /**
  * Container for all necessary components of a subtitle.
@@ -113,6 +112,8 @@ public class SubtitleObject {
             return;
         }
 
+        // TODO: comment this
+
         text = RemoveEndingCharacter.fix(text, '<', '>', this);
         text = RemoveEndingCharacter.fix(text, '[', ']', this);
         if (ManuelFix.MANUEL_FIX.containsKey(text)) {
@@ -139,6 +140,10 @@ public class SubtitleObject {
 
         text = FixUnbalancedDashes.fix(text);
         boolean fixedUnbalancedDashes = !originalText.equals(text);
+
+        if (!text.startsWith("-")) {
+            text = text.replace("\n", " "); // TODO: explain this
+        }
 
         for (String line : RegexUtil.split(RegexEnum.NEWLINE, text)) { // TODO: if contains punctuation
             splitMap.clear();

@@ -2,10 +2,10 @@ package main.subtitle.fix.fixMultipleLines;
 
 import main.srtFixer.config.SrtFixerConfig;
 import main.subtitle.Fixer;
-import main.subtitle.util.SubtitleUtil;
-import main.util.StringUtil;
+import main.subtitle.SubtitleUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 
 /**
  * Fix subtitles that span two lines.

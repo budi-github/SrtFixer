@@ -1,4 +1,4 @@
-package main.subtitle.util;
+package main.subtitle;
 
 import java.util.ArrayList;
 import java.util.List;

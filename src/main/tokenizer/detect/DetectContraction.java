@@ -103,7 +103,7 @@ public class DetectContraction {
     }
 
     /**
-     * Detect time.
+     * Detect contraction.
      * 
      * @param tt {@link TokenizedText}
      */

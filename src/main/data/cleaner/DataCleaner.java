@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import main.data.DataPath;
-import main.util.Util;
+import main.util.file.FileUtil;
 
 /**
  * Data cleaner.
@@ -46,7 +46,7 @@ public class DataCleaner {
      * @throws IOException
      */
     private static void cleanFile(String path) throws IOException {
-        List<String> list = Util.readAllLines(path);
+        List<String> list = FileUtil.readAllLines(path);
         Collections.sort(list);
 
         Set<String> set = new TreeSet<String>();

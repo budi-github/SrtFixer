@@ -1,6 +1,6 @@
 package main.util.regex;
 
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 
 /**
  * Regex utilities.

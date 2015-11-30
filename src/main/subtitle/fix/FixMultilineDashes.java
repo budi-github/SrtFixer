@@ -1,7 +1,7 @@
 package main.subtitle.fix;
 
 import main.subtitle.Fixer;
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 
 /**
  * Fix dashes that span multiple lines.

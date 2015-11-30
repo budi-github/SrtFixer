@@ -9,8 +9,8 @@ import java.util.TreeSet;
 
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
+import main.util.string.StringUtil;
 
 /**
  * Fix contractions.

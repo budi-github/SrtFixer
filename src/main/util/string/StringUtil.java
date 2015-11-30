@@ -1,4 +1,7 @@
-package main.util;
+package main.util.string;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
@@ -9,6 +12,27 @@ import main.util.regex.RegexUtil;
  * @author budi
  */
 public class StringUtil {
+
+    /**
+     * List of month names.
+     */
+    private static final Set<String> MONTHS;
+
+    static {
+        MONTHS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+        MONTHS.add("january");
+        MONTHS.add("february");
+        MONTHS.add("march");
+        MONTHS.add("april");
+        MONTHS.add("may");
+        MONTHS.add("june");
+        MONTHS.add("july");
+        MONTHS.add("august");
+        MONTHS.add("september");
+        MONTHS.add("october");
+        MONTHS.add("november");
+        MONTHS.add("december");
+    }
 
     /**
      * Generate a repeated string a set number of times.
@@ -294,6 +318,19 @@ public class StringUtil {
         }
 
         return true;
+    }
+
+    /**
+     * Determines if string is a month.
+     * 
+     * @param string string to check
+     * @return True if string is month, otherwise false.
+     */
+    public static boolean isMonth(String string) {
+        if (string == null || string.isEmpty()) {
+            return false;
+        }
+        return MONTHS.contains(string);
     }
 
 }

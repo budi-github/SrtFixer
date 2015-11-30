@@ -1,6 +1,6 @@
 package main.subtitle;
 
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 
 /**
  * Fixer interface. Must be implemented for all "fix" methods.

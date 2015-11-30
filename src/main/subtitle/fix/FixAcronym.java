@@ -6,9 +6,9 @@ import java.util.TreeSet;
 
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
-import main.util.StringBuilderUtil;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
+import main.util.string.StringUtil;
+import main.util.stringBuilder.StringBuilderUtil;
 
 /**
  * Fix acronyms.

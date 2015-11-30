@@ -9,10 +9,10 @@ import java.util.TreeSet;
 import main.data.DataPath;
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
-import main.util.StringUtil;
-import main.util.Util;
+import main.util.file.FileUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 
 /**
  * @author budi
@@ -298,7 +298,7 @@ public class FixCapitalization implements Fixer {
     private static void initSet(Set<String> set, String path) {
         List<String> list = null;
         try {
-            list = Util.readAllLines(path);
+            list = FileUtil.readAllLines(path);
         } catch (IOException e) {
             e.printStackTrace();
         }

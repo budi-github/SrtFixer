@@ -10,7 +10,7 @@ import java.util.Set;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 import test.ClassContainer;
 import test.Parallelized;
 import test.TestProperty;

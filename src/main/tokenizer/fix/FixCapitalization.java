@@ -1,4 +1,4 @@
-package main.tokenizer.fix.grammar;
+package main.tokenizer.fix;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import main.tokenizer.Token;
 import main.tokenizer.TokenConstants;
 import main.tokenizer.TokenProperty;
 import main.tokenizer.TokenizedText;
-import main.util.Util;
+import main.util.file.FileUtil;
 
 /**
  * Fix capitalization.
@@ -177,7 +177,7 @@ public class FixCapitalization {
     private static void initSet(Set<String> set, String path) {
         List<String> list = null;
         try {
-            list = Util.readAllLines(path);
+            list = FileUtil.readAllLines(path);
         } catch (IOException e) {
             e.printStackTrace();
         }

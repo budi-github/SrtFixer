@@ -3,7 +3,7 @@ package test.subtitle.fix;
 import java.util.Collection;
 
 import main.subtitle.fix.FixDashes;
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 import test.ParameterizedCollection;
 import test.subtitle.BaseSubtitleTest;
 

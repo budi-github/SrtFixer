@@ -1,4 +1,4 @@
-package main.util;
+package main.util.file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,49 +13,13 @@ import java.nio.charset.CharsetEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * General utilities.
  * 
  * @author budi
  */
-public class Util {
-
-    /**
-     * List of month names.
-     */
-    private static final Set<String> MONTHS;
-
-    static {
-        MONTHS = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
-        MONTHS.add("january");
-        MONTHS.add("february");
-        MONTHS.add("march");
-        MONTHS.add("april");
-        MONTHS.add("may");
-        MONTHS.add("june");
-        MONTHS.add("july");
-        MONTHS.add("august");
-        MONTHS.add("september");
-        MONTHS.add("october");
-        MONTHS.add("november");
-        MONTHS.add("december");
-    }
-
-    /**
-     * Determines if string is a month.
-     * 
-     * @param string string to check
-     * @return True if string is month, otherwise false.
-     */
-    public static boolean isMonth(String string) {
-        if (string == null || string.isEmpty()) {
-            return false;
-        }
-        return MONTHS.contains(string);
-    }
+public class FileUtil {
 
     /**
      * Copy file at oldPath to newPath.

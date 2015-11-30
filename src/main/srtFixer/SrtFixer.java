@@ -14,8 +14,8 @@ import java.util.Set;
 import main.srtFixer.util.SrtDirectory;
 import main.srtFixer.util.SrtFixerUtil;
 import main.subtitle.SubtitleObject;
-import main.subtitle.util.SubtitleUtil;
-import main.util.Util;
+import main.subtitle.SubtitleUtil;
+import main.util.file.FileUtil;
 
 /**
  * SrtFixer program.
@@ -86,7 +86,7 @@ public class SrtFixer {
         // copy this file into a new file and recreate the SrtDirectory.
         if (srtDirectory.isOnlyContainsOriginalSrt()) {
             if (srtDirectory.getNewSrtPath() != null) {
-                Util.copyFile(srtDirectory.getNewSrtPath(), srtDirectory.generateCopySrtPath());
+                FileUtil.copyFile(srtDirectory.getNewSrtPath(), srtDirectory.generateCopySrtPath());
             }
         }
 

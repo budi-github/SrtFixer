@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import main.util.Util;
+import main.util.file.FileUtil;
 
 /**
  * Directory containing srt file.
@@ -118,7 +118,7 @@ public class SrtDirectory {
      */
     public void findMediaFile() {
         for (File f : fileList) {
-            String extension = Util.getFileExtension(f);
+            String extension = FileUtil.getFileExtension(f);
             if (MEDIA_FILE_EXTENSIONS.contains(extension)) {
                 mediaFile = f;
                 break;
@@ -158,7 +158,7 @@ public class SrtDirectory {
             String srtPath = mediaFile.getPath();
             srtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
             for (File f : fileList) {
-                if (!f.getPath().equals(srtPath) && Util.getFileExtension(f).equalsIgnoreCase("srt")) {
+                if (!f.getPath().equals(srtPath) && FileUtil.getFileExtension(f).equalsIgnoreCase("srt")) {
                     originalSrtFile = f;
                     break;
                 }
@@ -174,7 +174,7 @@ public class SrtDirectory {
             }
         } else {
             for (File f : fileList) {
-                if (Util.getFileExtension(f).equalsIgnoreCase("srt")) {
+                if (FileUtil.getFileExtension(f).equalsIgnoreCase("srt")) {
                     originalSrtFile = f;
                     onlyContainsOriginalSrt = true;
                     break;

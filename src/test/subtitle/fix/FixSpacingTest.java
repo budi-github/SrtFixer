@@ -3,9 +3,9 @@ package test.subtitle.fix;
 import java.util.Collection;
 
 import main.subtitle.fix.FixSpacing;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 import test.ParameterizedCollection;
 import test.TestProperty;
 import test.subtitle.BaseSubtitleTest;

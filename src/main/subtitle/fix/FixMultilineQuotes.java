@@ -2,9 +2,9 @@ package main.subtitle.fix;
 
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 
 /**
  * Fix quotes that span multiple lines.

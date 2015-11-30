@@ -1,4 +1,4 @@
-package main.tokenizer.fix.grammar;
+package main.tokenizer.fix;
 
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +49,8 @@ public class FixContraction {
             if (prevPrevToken != null && prevPrevToken.containsProperty(TokenProperty.WORD)) {
                 if (prevToken.equals(TokenConstants.SINGLE_QUOTE)) {
                     if (DetectContraction.CONTRACTIONS_ENDINGS.contains(currentToken.toString())) {
-                        removeIndexSet.addAll(TokenUtil.lookBackAndRemove(tokens, i, TokenConstants.SPACE, prevPrevToken));
+                        removeIndexSet
+                                .addAll(TokenUtil.lookBackAndRemove(tokens, i, TokenConstants.SPACE, prevPrevToken));
                     }
                 }
             }

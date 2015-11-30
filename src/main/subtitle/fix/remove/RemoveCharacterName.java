@@ -2,7 +2,7 @@ package main.subtitle.fix.remove;
 
 import main.subtitle.Fixer;
 import main.subtitle.SubtitleObject;
-import main.util.StringUtil;
+import main.util.string.StringUtil;
 
 /**
  * Remove character name from the beginning of the line.

@@ -6,7 +6,7 @@ import java.util.List;
 
 import main.subtitle.SubtitleObject;
 import main.subtitle.TimeHolder;
-import main.util.Util;
+import main.util.file.FileUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
 
@@ -52,7 +52,7 @@ public class SrtFixerUtil {
         String[] array;
 
         StringBuilder builder = new StringBuilder();
-        List<String> lines = Util.readAllLines(path);
+        List<String> lines = FileUtil.readAllLines(path);
 
         for (String currentLine : lines) {
             if (expectNumber) {

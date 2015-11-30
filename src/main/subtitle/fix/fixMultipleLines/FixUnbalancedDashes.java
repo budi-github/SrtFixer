@@ -1,9 +1,9 @@
 package main.subtitle.fix.fixMultipleLines;
 
 import main.subtitle.Fixer;
-import main.util.StringUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
+import main.util.string.StringUtil;
 
 /**
  * Fix unbalanced dashes.

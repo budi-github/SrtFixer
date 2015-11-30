@@ -1,4 +1,4 @@
-package main.tokenizer.fix.grammar;
+package main.tokenizer.fix;
 
 import java.util.HashSet;
 import java.util.List;
