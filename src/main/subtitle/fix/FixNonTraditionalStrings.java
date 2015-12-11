@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 import main.subtitle.Fixer;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
 
 /**
  * Fix all non traditional strings.

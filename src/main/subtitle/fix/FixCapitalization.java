@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 import main.data.DataPath;
 import main.subtitle.Fixer;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
 import main.util.file.FileUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;

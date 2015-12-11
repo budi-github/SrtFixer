@@ -1,4 +1,4 @@
-package main.subtitle;
+package main.subtitle.subtitleObject;
 
 import main.srtFixer.config.SrtFixerConfig;
 import main.subtitle.fix.ChangeLsToIs;
@@ -85,22 +85,31 @@ public class SubtitleObject {
      * @param timeStart starting time
      * @param timeEnd ending time
      * @param text text
+     * @throws SubtitleObjectException Thrown if timeStart is greater than
+     *             timeEnd.
      */
-    public SubtitleObject(int id, TimeHolder timeStart, TimeHolder timeEnd, String text) {
+    public SubtitleObject(int id, TimeHolder timeStart, TimeHolder timeEnd, String text)
+            throws SubtitleObjectException {
         this.id = id;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
         this.text = text;
         this.originalText = RemoveEndingCharacter.fix(text, '<', '>', null);
         this.splitMap = new SplitMap();
+
+        if (timeStart != null && timeStart.calcTotalTimeMs() > timeEnd.calcTotalTimeMs()) {
+            throw new SubtitleObjectException(
+                    String.format("Start time is greater than end time. (%s > %s)", timeStart, timeEnd));
+        }
     }
 
     /**
      * Class constructor using only text.
      * 
      * @param text text
+     * @throws SubtitleObjectException
      */
-    public SubtitleObject(String text) {
+    public SubtitleObject(String text) throws SubtitleObjectException {
         this(-1, null, null, text);
     }
 
@@ -215,6 +224,41 @@ public class SubtitleObject {
 
         text = result;
     }
+
+    /*
+    public void fix() {
+        TokenizedText tt = new TokenizedText(text);
+    
+        RemoveHTMLTags.remove(tt);
+    
+        FixConsecutive.fix(tt);
+        FixPunctuationSpacing.fix(tt);
+    
+        FixAbbreviation.fix(tt);
+        DetectAbbreviation.detect(tt);
+    
+        FixLToI.fix(tt);
+    
+        FixTime.fix(tt);
+        DetectTime.detect(tt);
+        RemoveHearingImpaired.remove(tt);
+    
+        FixApostrophe.fix(tt);
+        FixContraction.fix(tt);
+        DetectContraction.detect(tt);
+    
+        FixWebsite.removeExcessSpace(tt);
+        DetectWebsite.detect(tt);
+    
+        FixAcronym.removeExcessSpace(tt);
+        DetectAcronym.detect(tt);
+        FixAcronym.fixCapitalization(tt);
+    
+        FixCapitalization.fix(tt);
+        FixDash.fix(tt);
+        text = tt.toString();
+    }
+    */
 
     /**
      * Split line by regex.

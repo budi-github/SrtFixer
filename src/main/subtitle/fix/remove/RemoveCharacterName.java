@@ -1,7 +1,7 @@
 package main.subtitle.fix.remove;
 
 import main.subtitle.Fixer;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
 import main.util.string.StringUtil;
 
 /**

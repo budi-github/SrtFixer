@@ -61,9 +61,10 @@ public class TimeHolder {
      * Class constructor.
      * 
      * @param string time string to parse
-     * @throws IOException Only thrown if string to parse is malformed.
+     * @throws IOException Thrown if string to parse is malformed.
+     * @throws TimeHolderException Thrown if time is negative.
      */
-    public TimeHolder(String string) throws IOException {
+    public TimeHolder(String string) throws IOException, TimeHolderException {
         if (string == null || string.isEmpty()) {
             throw new IOException("String is null or empty");
         }
@@ -82,6 +83,10 @@ public class TimeHolder {
         this.second = Integer.parseInt(array2[2].trim());
         this.millisecond = Integer.parseInt(array[1].trim());
         fixTime();
+
+        if (calcTotalTimeMs() < 0) {
+            throw new TimeHolderException(String.format("String \"%s\" cannot be negative", string));
+        }
     }
 
     /**

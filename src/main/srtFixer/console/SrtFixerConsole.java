@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import main.srtFixer.SrtFixer;
 import main.srtFixer.util.SrtDirectory;
+import main.subtitle.subtitleObject.SubtitleObjectException;
+import main.subtitle.timeHolder.TimeHolderException;
 
 /**
  * SrtFixer console application.
@@ -47,8 +49,10 @@ public class SrtFixerConsole {
      * @param args unused
      * @throws IOException Thrown if {@link #DIRECTORY} is not a directory or
      *             program cannot find srt file.
+     * @throws TimeHolderException
+     * @throws SubtitleObjectException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, TimeHolderException, SubtitleObjectException {
         long startTime = System.nanoTime();
 
         SrtFixer.run(DIRECTORY, RESYNC, SHOULD_RESYNC);

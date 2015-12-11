@@ -1,5 +1,6 @@
 package main.subtitle;
 
+import main.subtitle.subtitleObject.SubtitleObject;
 import main.util.string.StringUtil;
 
 /**

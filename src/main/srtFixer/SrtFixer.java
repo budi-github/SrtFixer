@@ -14,7 +14,9 @@ import java.util.Set;
 import main.srtFixer.config.SrtFixerConfig;
 import main.srtFixer.util.SrtDirectory;
 import main.srtFixer.util.SrtFixerUtil;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObjectException;
+import main.subtitle.timeHolder.TimeHolderException;
 import main.subtitle.util.SubtitleUtil;
 import main.util.file.FileUtil;
 
@@ -85,8 +87,11 @@ public class SrtFixer {
      * @param shouldResync If true, resync subtitle, otherwise do nothing.
      * @return list of {@link SubtitleObject}
      * @throws IOException
+     * @throws TimeHolderException
+     * @throws SubtitleObjectException
      */
-    public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync) throws IOException {
+    public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync)
+            throws IOException, TimeHolderException, SubtitleObjectException {
         SrtDirectory srtDirectory = new SrtDirectory(directory);
         // in the case where directory only contains the original srt file,
         // copy this file into a new file and recreate the SrtDirectory.
@@ -160,9 +165,11 @@ public class SrtFixer {
      * @param resync original time (in seconds) used to resync subtitle
      * @return new time (in seconds) used to resync subtitle
      * @throws IOException
+     * @throws TimeHolderException
+     * @throws SubtitleObjectException
      */
     private static double recalculateResync(List<SubtitleObject> subtitleList, String path, double resync)
-            throws IOException {
+            throws IOException, TimeHolderException, SubtitleObjectException {
         if (new File(path).exists()) {
             int index;
 

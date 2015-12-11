@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObjectException;
 import main.subtitle.timeHolder.TimeHolder;
+import main.subtitle.timeHolder.TimeHolderException;
 import main.util.file.FileUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
@@ -42,8 +44,11 @@ public class SrtFixerUtil {
      * @param path path to srt file
      * @return list of parsed {@link SubtitleObject}
      * @throws IOException
+     * @throws TimeHolderException
+     * @throws SubtitleObjectException
      */
-    public static List<SubtitleObject> parseSubtitleList(String path) throws IOException {
+    public static List<SubtitleObject> parseSubtitleList(String path)
+            throws IOException, TimeHolderException, SubtitleObjectException {
         List<SubtitleObject> subtitleList = new ArrayList<SubtitleObject>();
 
         boolean expectNumber = true, expectTime = false, expectText = false, done = false;

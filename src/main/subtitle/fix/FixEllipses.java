@@ -1,7 +1,7 @@
 package main.subtitle.fix;
 
 import main.subtitle.Fixer;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;
 

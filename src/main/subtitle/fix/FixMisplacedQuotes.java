@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import main.subtitle.Fixer;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
 import main.util.regex.RegexEnum;
 import main.util.string.StringUtil;
 

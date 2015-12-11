@@ -12,7 +12,8 @@ import org.junit.Before;
 import org.junit.runners.Parameterized.Parameters;
 
 import main.srtFixer.config.SrtFixerConfig;
-import main.subtitle.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObject;
+import main.subtitle.subtitleObject.SubtitleObjectException;
 import test.ClassContainer;
 import test.TestProperty;
 import test.base.tests.OriginalTest;
@@ -116,9 +117,13 @@ public abstract class BaseTest {
      * @return fixed line
      */
     public String fix(String line) {
-        SubtitleObject so = new SubtitleObject(line);
-        so.fix();
-        return so.getText();
+        try {
+            SubtitleObject so = new SubtitleObject(line);
+            so.fix();
+            return so.getText();
+        } catch (SubtitleObjectException e) {
+            return "";
+        }
     }
 
     /**
