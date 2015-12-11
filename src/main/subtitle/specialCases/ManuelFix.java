@@ -1,4 +1,4 @@
-package main.subtitle;
+package main.subtitle.specialCases;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +17,8 @@ public class ManuelFix {
 
     static {
         MANUEL_FIX = new HashMap<String, String>();
-        MANUEL_FIX.put("They said, \"The guy in the gray flannel\nsuit. \" I think I said, \"The, uh,",
-                "They said, \"The guy in the gray flannel\nsuit.\" I think I said, \"The, uh,"); // The Game, 722
+
+        // insert exceptions here
     }
 
 }

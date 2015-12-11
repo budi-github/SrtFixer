@@ -15,7 +15,7 @@ import main.srtFixer.config.SrtFixerConfig;
 import main.srtFixer.util.SrtDirectory;
 import main.srtFixer.util.SrtFixerUtil;
 import main.subtitle.SubtitleObject;
-import main.subtitle.SubtitleUtil;
+import main.subtitle.util.SubtitleUtil;
 import main.util.file.FileUtil;
 
 /**

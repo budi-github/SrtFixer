@@ -2,7 +2,7 @@ package test.subtitle.misc;
 
 import java.util.Collection;
 
-import main.subtitle.DoNotFix;
+import main.subtitle.specialCases.DoNotFix;
 import test.ParameterizedCollection;
 import test.subtitle.BaseSubtitleTest;
 

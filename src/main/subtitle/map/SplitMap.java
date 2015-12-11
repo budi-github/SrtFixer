@@ -1,4 +1,4 @@
-package main.subtitle;
+package main.subtitle.map;
 
 import java.util.HashMap;
 import java.util.Map;

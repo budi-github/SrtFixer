@@ -3,7 +3,7 @@ package test.subtitle.misc;
 import java.util.Collection;
 import java.util.Map.Entry;
 
-import main.subtitle.ManuelFix;
+import main.subtitle.specialCases.ManuelFix;
 import test.ParameterizedCollection;
 import test.subtitle.BaseSubtitleTest;
 

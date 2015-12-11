@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.subtitle.SubtitleObject;
-import main.subtitle.TimeHolder;
+import main.subtitle.timeHolder.TimeHolder;
 import main.util.file.FileUtil;
 import main.util.regex.RegexEnum;
 import main.util.regex.RegexUtil;

@@ -1,4 +1,4 @@
-package main.subtitle;
+package main.subtitle.specialCases;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,7 @@ public class DoNotFix {
 
     static {
         DO_NOT_FIX = new HashSet<String>();
-        
+
         // insert exceptions here
     }
 
