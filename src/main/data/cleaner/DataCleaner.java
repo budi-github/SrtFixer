@@ -34,6 +34,7 @@ public class DataCleaner {
         cleanFile(DataPath.getPotentialProperNounsPath());
         cleanFile(DataPath.getProperNounsPath());
         cleanFile(DataPath.getTitlesPath());
+        cleanFile(DataPath.getPotentialTitlesPath());
     }
 
     /**
