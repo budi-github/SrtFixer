@@ -16,6 +16,7 @@ SrtFixer fixes these problems and then some.
 * Remove hearing impaired text (HI)
 * Remove html tags
 * Fix common spelling and grammar errors
+* Fix overlapping subtitles
 
 ## License
 

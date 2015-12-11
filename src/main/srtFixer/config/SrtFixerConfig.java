@@ -10,7 +10,12 @@ public class SrtFixerConfig {
     /**
      * Maximum (single) line length.
      */
-    private static final int MAX_LINE_LENGTH = 60;
+    private static final int MAX_LINE_LENGTH = 50;
+
+    /**
+     * Minimum subtitle duration.
+     */
+    private static final int MIN_DURATION = 400; // TODO: this number should be based on the number of letters in the subtitle
 
     /**
      * Balance weight of line.
@@ -33,6 +38,13 @@ public class SrtFixerConfig {
      */
     public static int getMaxLineLength() {
         return MAX_LINE_LENGTH;
+    }
+
+    /**
+     * @return {@link #MIN_DURATION}
+     */
+    public static int getMinDuration() {
+        return MIN_DURATION;
     }
 
     /**

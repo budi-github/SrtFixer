@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import main.srtFixer.config.SrtFixerConfig;
 import main.srtFixer.util.SrtDirectory;
 import main.srtFixer.util.SrtFixerUtil;
 import main.subtitle.SubtitleObject;
@@ -42,12 +43,17 @@ public class SrtFixer {
     static {
         INVALID_WORDS = new HashSet<String>();
         INVALID_WORDS.add("aorion");
+        INVALID_WORDS.add("bozxphd");
         INVALID_WORDS.add("goldenbeard");
+        INVALID_WORDS.add("pacifer");
         INVALID_WORDS.add("subscene");
 
         INVALID_FIRST_LAST_WORDS = new HashSet<String>();
+        INVALID_FIRST_LAST_WORDS.add("corrected");
         INVALID_FIRST_LAST_WORDS.add("psdh");
         INVALID_FIRST_LAST_WORDS.add("resync");
+        INVALID_FIRST_LAST_WORDS.add("sub");
+        INVALID_FIRST_LAST_WORDS.add("subs");
         INVALID_FIRST_LAST_WORDS.add("subtitle");
         INVALID_FIRST_LAST_WORDS.add("translate");
         INVALID_FIRST_LAST_WORDS.add("translation");
@@ -109,6 +115,28 @@ public class SrtFixer {
 
         for (SubtitleObject so : subtitleList) {
             so.addTime(resync);
+        }
+
+        // warning and fix for overlapping subtitles
+        SubtitleObject prev = null;
+        for (SubtitleObject so : subtitleList) {
+            if (prev != null && prev.getTimeEnd().calcTotalTimeMs() > so.getTimeStart().calcTotalTimeMs()) {
+                System.err.println(
+                        String.format("Warning! Overlaping subtitles: (ID=%s, TimeEnd=%s), (ID=%s, TimeStart=%s)",
+                                prev.getId(), prev.getTimeEnd(), so.getId(), so.getTimeStart()));
+                so.getTimeStart().setTime(prev.getTimeEnd().calcTotalTimeMs() + 1);
+            }
+            prev = so;
+        }
+
+        // warning for quick subtitles
+        for (SubtitleObject so : subtitleList) {
+            int duration = so.getTimeEnd().calcTotalTimeMs() - so.getTimeStart().calcTotalTimeMs();
+            if (duration < SrtFixerConfig.getMinDuration()) {
+                System.err.println(
+                        String.format("Warning! Quick subtitles: (ID=%s, TimeStart=%s, TimeEnd=%s, Duration=%s)",
+                                so.getId(), so.getTimeStart(), so.getTimeEnd(), duration));
+            }
         }
 
         writeListToFile(subtitleList, srtDirectory.getNewSrtPath());

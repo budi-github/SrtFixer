@@ -103,6 +103,19 @@ public class TimeHolder {
     }
 
     /**
+     * Add time (in milliseconds) to {@link TimeHolder}.
+     * 
+     * @param ms time to add (in ms)
+     */
+    public void setTime(int ms) {
+        millisecond = ms;
+        hour = 0;
+        minute = 0;
+        second = 0;
+        fixTime();
+    }
+
+    /**
      * Fix any malformed time.
      */
     private void fixTime() {
@@ -146,4 +159,5 @@ public class TimeHolder {
     public String toString() {
         return String.format("%02d:%02d:%02d,%03d", hour, minute, second, millisecond);
     }
+
 }
