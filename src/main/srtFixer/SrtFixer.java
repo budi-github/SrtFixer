@@ -98,6 +98,7 @@ public class SrtFixer {
 
         List<SubtitleObject> subtitleList = SrtFixerUtil.parseSubtitleList(srtDirectory.getOriginalSrtFile().getPath());
 
+        // fix all subtitles
         for (SubtitleObject so : subtitleList) {
             so.fix();
         }
@@ -113,6 +114,7 @@ public class SrtFixer {
             resync = recalculateResync(subtitleList, srtDirectory.getNewSrtPath(), resync);
         }
 
+        // add time to all subtitles
         for (SubtitleObject so : subtitleList) {
             so.addTime(resync);
         }

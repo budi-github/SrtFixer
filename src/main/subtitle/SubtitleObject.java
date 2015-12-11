@@ -142,7 +142,7 @@ public class SubtitleObject {
         boolean fixedUnbalancedDashes = !originalText.equals(text);
 
         if (!text.startsWith("-")) {
-            text = text.replace("\n", " "); // TODO: explain this
+            //text = text.replace("\n", " "); // TODO: explain this
         }
 
         for (String line : RegexUtil.split(RegexEnum.NEWLINE, text)) { // TODO: if contains punctuation
