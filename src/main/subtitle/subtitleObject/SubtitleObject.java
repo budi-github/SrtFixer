@@ -160,6 +160,7 @@ public class SubtitleObject {
         }
 
         for (String line : RegexUtil.split(RegexEnum.NEWLINE, text)) { // TODO: if contains punctuation
+            line = line.trim();
             splitMap.clear();
             line = PrepareLine.fix(line, this);
             split(RegexEnum.SPACE, line);
