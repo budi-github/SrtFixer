@@ -35,7 +35,7 @@ public class RemoveCharacterNameTest extends BaseSubtitleTest {
         collection.add("It's 9:00");
         collection.add("P.S.: I love you.");
 
-        collection.add("BOY: Gee whiz!\nGIRL: Wow.", "Gee whiz!\nWow.");
+        collection.add("BOY: Gee whiz!\nGIRL: Wow.", "- Gee whiz!\n- Wow.");
 
         return collection.getCollection();
     }

@@ -159,12 +159,17 @@ public class SubtitleObject {
             //text = text.replace("\n", " "); // TODO: explain this
         }
 
+        String temp;
         for (String line : RegexUtil.split(RegexEnum.NEWLINE, text)) { // TODO: if contains punctuation
             line = line.trim();
             splitMap.clear();
             line = PrepareLine.fix(line, this);
             split(RegexEnum.SPACE, line);
+            temp = line;
             line = RemoveCharacterName.fix(line, this);
+            if (!temp.equals(line)) {
+                ++removedNames;
+            }
             line = FixSpelling.fix(line, this);
             if (!SrtFixerConfig.isToggleCorrectCapitalization()) {
                 line = FixToUppercase.fix(line, this); // TODO: remove this once all bugs in FixCapitalization is fixed
@@ -201,6 +206,7 @@ public class SubtitleObject {
                     builder.append("- ");
                     builder.append(line);
                     result = builder.toString();
+                    continue;
                 }
                 builder.append(result);
                 builder.append(line);
