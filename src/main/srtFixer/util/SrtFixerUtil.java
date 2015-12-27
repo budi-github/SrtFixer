@@ -84,7 +84,11 @@ public class SrtFixerUtil {
                 }
             }
             if (done) {
-                subtitleList.add(new SubtitleObject(count, timeStart, timeEnd, builder.toString()));
+                try {
+                    subtitleList.add(new SubtitleObject(count, timeStart, timeEnd, builder.toString()));
+                } catch (SubtitleObjectException e) {
+                    // TODO: determine how to handle this exception
+                }
                 builder.setLength(0);
                 done = false;
             }

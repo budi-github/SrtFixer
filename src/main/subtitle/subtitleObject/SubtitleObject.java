@@ -99,7 +99,7 @@ public class SubtitleObject {
 
         if (timeStart != null && timeStart.calcTotalTimeMs() > timeEnd.calcTotalTimeMs()) {
             throw new SubtitleObjectException(
-                    String.format("Start time is greater than end time. (%s > %s)", timeStart, timeEnd));
+                    String.format("[ID: %s] Start time is greater than end time. (%s > %s)", id, timeStart, timeEnd));
         }
     }
 
