@@ -32,7 +32,7 @@ public class SrtFixer {
      * <p>
      * If any invalid word is found within any line, the line is removed.
      */
-    private static final Set<String> INVALID_WORDS;
+    public static final Set<String> INVALID_WORDS;
 
     /**
      * Set of all invalid words, only occuring in the beginning or end of the
@@ -40,15 +40,12 @@ public class SrtFixer {
      * <p>
      * If any invalid word is found within these lines, the line is removed.
      */
-    private static final Set<String> INVALID_FIRST_LAST_WORDS;
+    public static final Set<String> INVALID_FIRST_LAST_WORDS;
 
     static {
         INVALID_WORDS = new HashSet<String>();
-        INVALID_WORDS.add("aorion");
-        INVALID_WORDS.add("bozxphd");
-        INVALID_WORDS.add("goldenbeard");
-        INVALID_WORDS.add("pacifer");
-        INVALID_WORDS.add("subscene");
+
+        // insert invalid words here
 
         INVALID_FIRST_LAST_WORDS = new HashSet<String>();
         INVALID_FIRST_LAST_WORDS.add("corrected");
@@ -96,7 +93,7 @@ public class SrtFixer {
         // in the case where directory only contains the original srt file,
         // copy this file into a new file and recreate the SrtDirectory.
         if (srtDirectory.isOnlyContainsOriginalSrt()) {
-            if (srtDirectory.getNewSrtPath() != null) {
+            if (srtDirectory.getNewSrtPath().equals(srtDirectory.getOriginalSrtFile().getAbsolutePath())) {
                 FileUtil.copyFile(srtDirectory.getNewSrtPath(), srtDirectory.generateCopySrtPath());
             }
         }

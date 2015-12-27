@@ -128,11 +128,17 @@ public class SrtDirectory {
 
     /**
      * Find new srt file path in directory.
+     * 
+     * If media file is present, set file name to name of media file. Otherwise
+     * set file name to the name of the directory.
      */
     public void findNewSrtPath() {
         if (mediaFile != null) {
             String srtPath = mediaFile.getPath();
             newSrtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
+        } else {
+            String[] split = path.split("/");
+            newSrtPath = split[split.length - 1] + ".srt";
         }
     }
 
