@@ -138,7 +138,7 @@ public class SrtDirectory {
             newSrtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
         } else {
             String[] split = path.split("/");
-            newSrtPath = split[split.length - 1] + ".srt";
+            newSrtPath = path + "//" + split[split.length - 1] + ".srt";
         }
     }
 
@@ -163,10 +163,12 @@ public class SrtDirectory {
         if (mediaFile != null) {
             String srtPath = mediaFile.getPath();
             srtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
+            // find longest named srt file
             for (File f : fileList) {
                 if (!f.getPath().equals(srtPath) && FileUtil.getFileExtension(f).equalsIgnoreCase("srt")) {
-                    originalSrtFile = f;
-                    break;
+                    if (originalSrtFile == null || originalSrtFile.getName().length() < f.getName().length()) {
+                        originalSrtFile = f;
+                    }
                 }
             }
             if (originalSrtFile == null) {
@@ -179,13 +181,16 @@ public class SrtDirectory {
                 }
             }
         } else {
+            int count = 0;
             for (File f : fileList) {
                 if (FileUtil.getFileExtension(f).equalsIgnoreCase("srt")) {
-                    originalSrtFile = f;
-                    onlyContainsOriginalSrt = true;
-                    break;
+                    if (originalSrtFile == null || originalSrtFile.getName().length() < f.getName().length()) {
+                        originalSrtFile = f;
+                    }
+                    ++count;
                 }
             }
+            onlyContainsOriginalSrt = (count == 1);
         }
 
         if (originalSrtFile == null) {

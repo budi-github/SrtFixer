@@ -115,8 +115,7 @@ public class SrtFixer {
             updateIds(subtitleList);
 
             changes = countAndPrintChanges(subtitleList);
-        }
-        else {
+        } else {
             // trim all subtitles
             for (SubtitleObject so : subtitleList) {
                 so.trim();
