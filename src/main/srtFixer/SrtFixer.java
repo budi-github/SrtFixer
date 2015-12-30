@@ -82,12 +82,14 @@ public class SrtFixer {
      * @param directory Directory containing of the media file and srt file.
      * @param resync time (in seconds) used to resync subtitle
      * @param shouldResync If true, resync subtitle, otherwise do nothing.
+     * @param resyncOnly If true, resync subtitle only (do not correct any
+     *            errors), otherwise resync and correct.
      * @return list of {@link SubtitleObject}
      * @throws IOException
      * @throws TimeHolderException
      * @throws SubtitleObjectException
      */
-    public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync)
+    public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync, boolean resyncOnly)
             throws IOException, TimeHolderException, SubtitleObjectException {
         SrtDirectory srtDirectory = new SrtDirectory(directory);
         // in the case where directory only contains the original srt file,
@@ -100,17 +102,26 @@ public class SrtFixer {
 
         List<SubtitleObject> subtitleList = SrtFixerUtil.parseSubtitleList(srtDirectory.getOriginalSrtFile().getPath());
 
-        // fix all subtitles
-        for (SubtitleObject so : subtitleList) {
-            so.fix();
+        int changes = 0;
+        if (!resyncOnly) {
+            // fix all subtitles
+            for (SubtitleObject so : subtitleList) {
+                so.fix();
+            }
+
+            removeInvalidFirstAndLastWords(subtitleList);
+            removeInvalidWords(subtitleList);
+
+            updateIds(subtitleList);
+
+            changes = countAndPrintChanges(subtitleList);
         }
-
-        removeInvalidFirstAndLastWords(subtitleList);
-        removeInvalidWords(subtitleList);
-
-        updateIds(subtitleList);
-
-        int changes = countAndPrintChanges(subtitleList);
+        else {
+            // trim all subtitles
+            for (SubtitleObject so : subtitleList) {
+                so.trim();
+            }
+        }
 
         if (!shouldResync) {
             resync = recalculateResync(subtitleList, srtDirectory.getNewSrtPath(), resync);
@@ -121,25 +132,27 @@ public class SrtFixer {
             so.addTime(resync);
         }
 
-        // warning and fix for overlapping subtitles
-        SubtitleObject prev = null;
-        for (SubtitleObject so : subtitleList) {
-            if (prev != null && prev.getTimeEnd().calcTotalTimeMs() > so.getTimeStart().calcTotalTimeMs()) {
-                System.err.println(
-                        String.format("Warning! Overlaping subtitles: (ID=%s, TimeEnd=%s), (ID=%s, TimeStart=%s)",
-                                prev.getId(), prev.getTimeEnd(), so.getId(), so.getTimeStart()));
-                so.getTimeStart().setTime(prev.getTimeEnd().calcTotalTimeMs() + 1);
+        if (!resyncOnly) {
+            // warning and fix for overlapping subtitles
+            SubtitleObject prev = null;
+            for (SubtitleObject so : subtitleList) {
+                if (prev != null && prev.getTimeEnd().calcTotalTimeMs() > so.getTimeStart().calcTotalTimeMs()) {
+                    System.err.println(
+                            String.format("Warning! Overlaping subtitles: (ID=%s, TimeEnd=%s), (ID=%s, TimeStart=%s)",
+                                    prev.getId(), prev.getTimeEnd(), so.getId(), so.getTimeStart()));
+                    so.getTimeStart().setTime(prev.getTimeEnd().calcTotalTimeMs() + 1);
+                }
+                prev = so;
             }
-            prev = so;
-        }
 
-        // warning for quick subtitles
-        for (SubtitleObject so : subtitleList) {
-            int duration = so.getTimeEnd().calcTotalTimeMs() - so.getTimeStart().calcTotalTimeMs();
-            if (duration < SrtFixerConfig.getMinDuration()) {
-                System.err.println(
-                        String.format("Warning! Quick subtitles: (ID=%s, TimeStart=%s, TimeEnd=%s, Duration=%s)",
-                                so.getId(), so.getTimeStart(), so.getTimeEnd(), duration));
+            // warning for quick subtitles
+            for (SubtitleObject so : subtitleList) {
+                int duration = so.getTimeEnd().calcTotalTimeMs() - so.getTimeStart().calcTotalTimeMs();
+                if (duration < SrtFixerConfig.getMinDuration()) {
+                    System.err.println(
+                            String.format("Warning! Quick subtitles: (ID=%s, TimeStart=%s, TimeEnd=%s, Duration=%s)",
+                                    so.getId(), so.getTimeStart(), so.getTimeEnd(), duration));
+                }
             }
         }
 

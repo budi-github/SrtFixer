@@ -35,6 +35,17 @@ public class SrtFixerConsole {
     private static final boolean SHOULD_RESYNC = false;
 
     /**
+     * Flag to determine whether or not to only resync the subtitle.
+     * <p>
+     * If true, the program will resync the srt file with {@link #RESYNC}, and
+     * will NOT correct any errors.
+     * <p>
+     * If false, the program will both resync the srt file with {@link #RESYNC},
+     * and will correct any errors.
+     */
+    private static final boolean RESYNC_ONLY = false;
+
+    /**
      * Time (in seconds) used to resync subtitle.
      * <p>
      * If the subtitles appear too FAST, INCREASE resync.
@@ -55,7 +66,7 @@ public class SrtFixerConsole {
     public static void main(String[] args) throws IOException, TimeHolderException, SubtitleObjectException {
         long startTime = System.nanoTime();
 
-        SrtFixer.run(DIRECTORY, RESYNC, SHOULD_RESYNC);
+        SrtFixer.run(DIRECTORY, RESYNC, SHOULD_RESYNC, RESYNC_ONLY);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1000000;

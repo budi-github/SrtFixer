@@ -100,7 +100,7 @@ public class SwingView extends JFrame implements PropertyChangeListener {
                         if (resyncField.getText().isEmpty()) {
                             resyncField.setText("0");
                         }
-                        SrtFixer.run(mediaField.getText(), Double.parseDouble(resyncField.getText()), true);
+                        SrtFixer.run(mediaField.getText(), Double.parseDouble(resyncField.getText()), true, false);
                         helpLabel.setText(helpLabelText);
                     }
                 } catch (Exception e) {

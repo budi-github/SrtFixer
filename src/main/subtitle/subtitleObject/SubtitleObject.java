@@ -325,6 +325,13 @@ public class SubtitleObject {
     }
 
     /**
+     * Trim {@link #text}
+     */
+    public void trim() {
+        text = text.trim();
+    }
+
+    /**
      * Add time to {@link #timeStart} and {@link #timeEnd}.
      * 
      * @param time time to add (in seconds)
