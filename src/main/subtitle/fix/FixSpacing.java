@@ -79,7 +79,8 @@ public class FixSpacing implements Fixer {
                     addSpace = false;
                 } else if (foundDoubleQuote && prev.equals("\"")) {
                     addSpace = false;
-                } else if (prev.equals("/") || prev.equals("$") || prev.equals("@")) {
+                } else if (prev.equals("/") || prev.equals("$") || prev.equals("@")
+                        || (prev.equals("#") && !current.endsWith("#"))) {
                     addSpace = false;
                 } else if (prev.equals("-")) {
                     if (prevPrev != null && prevPrev.equals("-")) {
