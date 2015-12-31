@@ -33,6 +33,8 @@ public class FixNonTraditionalStrings implements Fixer {
     static {
         MAP = new HashMap<String, String>(); // TODO: use TreeMap here?
         MAP.put("’", "'");
+        MAP.put("“", "\"");
+        MAP.put("”", "\"");
 
         StringBuilder regex = new StringBuilder();
         regex.append("[^");
