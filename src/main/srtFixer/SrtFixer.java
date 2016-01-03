@@ -91,6 +91,7 @@ public class SrtFixer {
      */
     public static List<SubtitleObject> run(String directory, double resync, boolean shouldResync, boolean resyncOnly)
             throws IOException, TimeHolderException, SubtitleObjectException {
+        resyncWarning(resync, shouldResync);
         SrtDirectory srtDirectory = new SrtDirectory(directory);
         // in the case where directory only contains the original srt file,
         // copy this file into a new file and recreate the SrtDirectory.
@@ -322,6 +323,19 @@ public class SrtFixer {
             if (out != null) {
                 out.close();
             }
+        }
+    }
+
+    /**
+     * Output warning message if resync is not 0.0 and shouldResync toggle
+     * equals true.
+     * 
+     * @param resync resync value
+     * @param shouldResync should resync toggle
+     */
+    private static void resyncWarning(double resync, boolean shouldResync) {
+        if (resync != 0.0 && !shouldResync) {
+            System.err.println("Warning: RESYNC != 0.0 and SHOULD_RESYNC == false");
         }
     }
 
