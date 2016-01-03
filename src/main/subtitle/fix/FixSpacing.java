@@ -80,7 +80,7 @@ public class FixSpacing implements Fixer {
                 } else if (foundDoubleQuote && prev.equals("\"")) {
                     addSpace = false;
                 } else if (prev.equals("/") || prev.equals("$") || prev.equals("@")
-                        || (prev.equals("#") && !current.endsWith("#"))) {
+                        || (prev.equals("#") && !so.getText().endsWith("#"))) {
                     addSpace = false;
                 } else if (prev.equals("-")) {
                     if (prevPrev != null && prevPrev.equals("-")) {
