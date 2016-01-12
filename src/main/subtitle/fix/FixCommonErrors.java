@@ -27,6 +27,13 @@ public class FixCommonErrors implements Fixer {
      */
     private static final TreeMap<String, String> SPECIAL_BEGINNING_EXCEPTIONS;
 
+    /**
+     * Map of all special exceptions.
+     * 
+     * Lines that contain a key in this map should be fixed to its value.
+     */
+    private static final TreeMap<String, String> SPECIAL_EXCEPTIONS;
+
     static {
         SPECIAL_BEGINNING_EXCEPTIONS = new TreeMap<String, String>();
         SPECIAL_BEGINNING_EXCEPTIONS.put("- \"... ", "- \"..."); // [- "... ] -> [- "...]
@@ -34,6 +41,11 @@ public class FixCommonErrors implements Fixer {
         SPECIAL_BEGINNING_EXCEPTIONS.put("-...", "- ..."); // [-...] -> [- ...]
         SPECIAL_BEGINNING_EXCEPTIONS.put("- ... ", "- ..."); // [- ... ] -> [- ...]
         SPECIAL_BEGINNING_EXCEPTIONS.put("\" '", "\"'"); // [" '] -> ["']
+
+        SPECIAL_EXCEPTIONS = new TreeMap<String, String>();
+        SPECIAL_EXCEPTIONS.put(".-", ". - "); // [.-] -> [. - ]
+        SPECIAL_EXCEPTIONS.put("?-", "? - "); // [?-] -> [? - ]
+        SPECIAL_EXCEPTIONS.put("!-", "! - "); // [!-] -> [! - ]
     }
 
     /**
@@ -68,6 +80,10 @@ public class FixCommonErrors implements Fixer {
             if (line.startsWith(map.getKey())) {
                 line = line.replaceFirst(map.getKey(), map.getValue());
             }
+        }
+
+        for (Entry<String, String> entry : SPECIAL_EXCEPTIONS.entrySet()) {
+            line = line.replace(entry.getKey(), entry.getValue());
         }
 
         return line;
