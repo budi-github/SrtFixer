@@ -129,6 +129,7 @@ public class SubtitleObject {
         // TODO: comment this
 
         text = RemoveEndingCharacter.fix(text, '<', '>', this);
+        text = RemoveEndingCharacter.fix(text, '{', '}', this);
         text = RemoveEndingCharacter.fix(text, '[', ']', this);
         if (ManuelFix.MANUEL_FIX.containsKey(text)) {
             text = ManuelFix.MANUEL_FIX.get(text);
