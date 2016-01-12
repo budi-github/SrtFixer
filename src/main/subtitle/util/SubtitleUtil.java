@@ -47,8 +47,14 @@ public class SubtitleUtil {
     public static boolean sentenceContainsWords(String sentence, Set<String> words) {
         sentence = sentence.toLowerCase();
         for (String word : words) {
-            if (sentence.contains(word.toLowerCase())) {
-                return true;
+            word = word.toLowerCase();
+            if (sentence.contains(word)) {
+                String[] split = sentence.split(" ");
+                for (String sentenceWord : split) {
+                    if (sentenceWord.equals(word)) {
+                        return true;
+                    }
+                }
             }
         }
         return false;
