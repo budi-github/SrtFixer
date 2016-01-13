@@ -93,7 +93,8 @@ public class FixSpacingTest extends BaseSubtitleTest {
         collection.add("- Look at you.Hilarious.", "- Look at you. Hilarious.");
 
         collection.add("I'm #1!");
-        
+        collection.add("I'm # 1!", "I'm #1!");
+
         collection.add("# Music #", TestProperty.EXCLUDE_QUOTE_TEST);
         collection.add("- # Boo! #\n- # Afternoon delight... #", TestProperty.EXCLUDE_QUOTE_TEST);
 

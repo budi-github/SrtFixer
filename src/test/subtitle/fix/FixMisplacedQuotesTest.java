@@ -43,6 +43,9 @@ public class FixMisplacedQuotesTest extends BaseSubtitleTest {
         collection.add("an' I don't care");
         collection.add("maitre d'");
 
+        collection.add("y'know");
+        collection.add("y' know", "y'know");
+
         collection.add("'94", "'94");
         collection.add("My '50 Chevy Impala", "My '50 Chevy Impala");
         collection.add("Why '98?", "Why '98?");
