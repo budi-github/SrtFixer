@@ -86,6 +86,11 @@ public class FixCommonErrors implements Fixer {
             line = line.replace(entry.getKey(), entry.getValue());
         }
 
+        // TODO: messy
+        if (line.startsWith("- #") && !line.startsWith("- # ")) {
+            line = "- # " + line.substring(2, line.length());
+        }
+
         return line;
     }
 

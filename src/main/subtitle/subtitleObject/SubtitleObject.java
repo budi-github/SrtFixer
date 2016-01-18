@@ -138,6 +138,9 @@ public class SubtitleObject {
             return;
         }
 
+        if (text.startsWith("#") && !text.endsWith("#")) {
+            text += " #";
+        }
         text = RemoveEndingCharacter.fix(text, '(', ')', this);
         text = FixNonTraditionalStrings.fix(text, this);
 

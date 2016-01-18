@@ -39,6 +39,10 @@ public class FixCommonErrorsTest extends BaseSubtitleTest {
 
         collection.add("- ... Zoinks!", "- ...Zoinks!");
 
+        // starts with [- #]
+
+        collection.add("- #Hello", "- # Hello");
+
         return collection.getCollection();
     }
 
