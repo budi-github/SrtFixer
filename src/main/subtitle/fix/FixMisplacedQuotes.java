@@ -34,6 +34,7 @@ public class FixMisplacedQuotes implements Fixer {
         APPEND_QUOTE = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
         APPEND_QUOTE.add("an");
         APPEND_QUOTE.add("d");
+        APPEND_QUOTE.add("l");
         APPEND_QUOTE.add("ol");
         APPEND_QUOTE.add("po");
         APPEND_QUOTE.add("sho");
@@ -89,7 +90,7 @@ public class FixMisplacedQuotes implements Fixer {
             if (prevPrev != null) {
                 if (prev.equals("'")) {
                     if (prevPrev.equalsIgnoreCase("o") || prevPrev.equalsIgnoreCase("d")
-                            || prevPrev.equalsIgnoreCase("y")) {
+                            || prevPrev.equalsIgnoreCase("l") || prevPrev.equalsIgnoreCase("y")) {
                         builder.deleteCharAt(builder.length() - 2);
                         addSpace = false;
                     } else if ((APPEND_QUOTE.contains(prevPrev)
