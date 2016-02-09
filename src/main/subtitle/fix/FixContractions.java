@@ -58,6 +58,7 @@ public class FixContractions implements Fixer {
         CONTRACTIONS_ENDINGS.add("d");
         CONTRACTIONS_ENDINGS.add("ll");
         CONTRACTIONS_ENDINGS.add("m");
+        CONTRACTIONS_ENDINGS.add("n");
         CONTRACTIONS_ENDINGS.add("re");
         CONTRACTIONS_ENDINGS.add("t");
         CONTRACTIONS_ENDINGS.add("s");
