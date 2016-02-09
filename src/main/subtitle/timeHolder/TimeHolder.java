@@ -66,7 +66,8 @@ public class TimeHolder {
      */
     public TimeHolder(String string) throws IOException, TimeHolderException {
         if (string == null || string.isEmpty()) {
-            throw new IOException("String is null or empty");
+            // TODO: add message about UTF-8 with BOM
+            throw new IOException("String is null or empty. Try saving file as UTF-8 first.");
         }
 
         String[] array = RegexUtil.split(RegexEnum.COMMA, string);
