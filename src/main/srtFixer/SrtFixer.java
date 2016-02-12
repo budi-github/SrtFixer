@@ -49,11 +49,14 @@ public class SrtFixer {
 
         INVALID_FIRST_LAST_WORDS = new HashSet<String>();
         INVALID_FIRST_LAST_WORDS.add("corrected");
+        INVALID_FIRST_LAST_WORDS.add("encoded");
         INVALID_FIRST_LAST_WORDS.add("psdh");
         INVALID_FIRST_LAST_WORDS.add("resync");
         INVALID_FIRST_LAST_WORDS.add("sub");
+        INVALID_FIRST_LAST_WORDS.add("subbed");
         INVALID_FIRST_LAST_WORDS.add("subs");
         INVALID_FIRST_LAST_WORDS.add("subtitle");
+        INVALID_FIRST_LAST_WORDS.add("synced");
         INVALID_FIRST_LAST_WORDS.add("translate");
         INVALID_FIRST_LAST_WORDS.add("translation");
     }

@@ -49,7 +49,7 @@ public class SubtitleUtil {
         for (String word : words) {
             word = word.toLowerCase();
             if (sentence.contains(word)) {
-                String[] split = sentence.split(" ");
+                String[] split = sentence.replace('\n', ' ').split(" ");
                 for (String sentenceWord : split) {
                     if (sentenceWord.equals(word)) {
                         return true;
