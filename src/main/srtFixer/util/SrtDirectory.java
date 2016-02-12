@@ -137,6 +137,7 @@ public class SrtDirectory {
             String srtPath = mediaFile.getPath();
             newSrtPath = srtPath.substring(0, srtPath.lastIndexOf('.')) + ".srt";
         } else {
+            // TODO: something's wrong
             String[] split = path.split("/");
             newSrtPath = path + "//" + split[split.length - 1] + ".srt";
         }
