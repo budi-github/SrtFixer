@@ -90,6 +90,9 @@ public class FixCommonErrors implements Fixer {
         if (line.startsWith("- #") && !line.startsWith("- # ")) {
             line = "- # " + line.substring(2, line.length());
         }
+        if (line.startsWith("- # #")) {
+            line = "- # " + line.substring(5, line.length());
+        }
 
         return line;
     }

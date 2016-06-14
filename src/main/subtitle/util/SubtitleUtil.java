@@ -55,6 +55,12 @@ public class SubtitleUtil {
                         return true;
                     }
                 }
+                split = sentence.replaceAll("\\p{P}", " ").split(" ");
+                for (String sentenceWord : split) {
+                    if (sentenceWord.equals(word)) {
+                        return true;
+                    }
+                }
             }
         }
         return false;

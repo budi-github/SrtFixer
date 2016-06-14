@@ -181,8 +181,10 @@ public class FixContractions implements Fixer {
                     } else if (prevPrev != null && StringUtil.isPunctuation(prevPrev)) {
                         addSpace = false;
                     } else {
-                        builder.deleteCharAt(builder.length() - 2);
-                        addSpace = false;
+                        if (builder.length() >= 2) {
+                            builder.deleteCharAt(builder.length() - 2);
+                            addSpace = false;
+                        }
                     }
                 }
             }
